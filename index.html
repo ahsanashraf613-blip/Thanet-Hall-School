@@ -10,15 +10,704 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="icon" type="image/png" href="images/logo.png">
-<link rel="stylesheet" href="css/style.css">
+<style>
+  :root {
+    --bg: #f8f9fc;
+    --bg-warm: #eef2f8;
+    --bg-deep: #0a1b3d;
+    --fg: #1a2b4d;
+    --muted: #5a6577;
+    --primary: #0f2c5e; /* Navy Blue */
+    --primary-light: #1e4380;
+    --primary-soft: #3a69bd;
+    --accent: #d4af37; /* Gold */
+    --accent-light: #e8d5a0;
+    --accent-dark: #b8902a;
+    --card: #ffffff;
+    --border: rgba(15, 44, 94, 0.12);
+  }
+
+  * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    overflow-x: hidden;
+  }
+  .font-display { font-family: 'Playfair Display', serif; }
+
+  /* ===== LOADER ===== */
+  #loader {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  #loader.hidden { opacity: 0; visibility: hidden; }
+  .loader-crest {
+    width: 110px; height: 110px;
+    background: #fff;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    animation: pulse-ring 2s ease-in-out infinite;
+    padding: 8px;
+  }
+  .loader-crest::before {
+    content: ''; position: absolute; inset: -12px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+    animation: pulse-ring 2s ease-in-out infinite 0.5s;
+  }
+  .loader-crest img {
+    width: 100%; height: 100%; object-fit: contain;
+    border-radius: 50%;
+  }
+  @keyframes pulse-ring {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.7; }
+  }
+
+  /* ===== NAVIGATION ===== */
+  #navbar {
+    position: sticky; top: 0; z-index: 1000;
+    background: rgba(248, 249, 252, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.4s ease;
+  }
+  #navbar.scrolled {
+    background: rgba(248, 249, 252, 0.98);
+    box-shadow: 0 4px 30px rgba(15, 44, 94, 0.08);
+  }
+  .nav-link {
+    position: relative; padding: 8px 4px;
+    font-weight: 500; font-size: 14px;
+    color: var(--fg); transition: color 0.3s ease;
+    cursor: pointer;
+  }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover { color: var(--primary); }
+  .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+  .nav-link.active { color: var(--primary); }
+
+  /* ===== LOGO ===== */
+  .logo-img {
+    height: 52px;
+    width: auto;
+    transition: transform 0.4s ease;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+  .logo:hover .logo-img { transform: rotate(5deg) scale(1.05); }
+
+  /* ===== BUTTONS ===== */
+  .btn-primary {
+    background: var(--accent);
+    color: var(--primary);
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-weight: 600; font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid var(--accent);
+    cursor: pointer;
+  }
+  .btn-primary::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--primary);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+    z-index: 0;
+  }
+  .btn-primary > * { position: relative; z-index: 1; }
+  .btn-primary:hover::before { transform: translateY(0); }
+  .btn-primary:hover { color: var(--accent); border-color: var(--primary); }
+  .btn-primary:hover i { transform: translateX(4px); }
+  .btn-primary i { transition: transform 0.3s ease; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-weight: 600; font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 1px solid var(--primary);
+    display: inline-flex; align-items: center; gap: 10px;
+    cursor: pointer;
+  }
+  .btn-outline:hover {
+    background: var(--primary); color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(15, 44, 94, 0.2);
+  }
+
+  /* ===== PAGES ===== */
+  .page { display: none; animation: pageFadeIn 0.7s ease forwards; }
+  .page.active { display: block; }
+  @keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    background: var(--bg-deep);
+    overflow: hidden;
+    display: flex; align-items: center;
+    color: #fff;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(58, 105, 189, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+      linear-gradient(135deg, #061121 0%, #0a1b3d 50%, #061121 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(60px); opacity: 0.5;
+    animation: float 20s ease-in-out infinite;
+  }
+  .orb-1 { width: 400px; height: 400px; background: #1e4380; top: -100px; left: -100px; }
+  .orb-2 { width: 300px; height: 300px; background: #d4af37; bottom: -50px; right: 10%; animation-delay: -7s; opacity: 0.2; }
+  .orb-3 { width: 250px; height: 250px; background: #3a69bd; top: 40%; right: -50px; animation-delay: -14s; }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(50px, -30px) scale(1.1); }
+    66% { transform: translate(-30px, 40px) scale(0.95); }
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .hero-title em {
+    font-style: italic; font-weight: 600;
+    color: var(--accent);
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12px; letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    font-weight: 600;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 40px; height: 1px;
+    background: var(--accent);
+  }
+
+  /* ===== SCROLL ANIMATIONS ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { transform: translateX(-40px); }
+  .reveal-right { transform: translateX(40px); }
+  .reveal-left.visible, .reveal-right.visible { transform: translateX(0); }
+  .reveal-scale { transform: scale(0.92); }
+  .reveal-scale.visible { transform: scale(1); }
+
+  .stagger > * {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .stagger.visible > * { opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+  .stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+  .stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+  .stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+  .stagger.visible > *:nth-child(5) { transition-delay: 0.5s; }
+  .stagger.visible > *:nth-child(6) { transition-delay: 0.6s; }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12px; letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    font-weight: 600;
+  }
+  .section-eyebrow::before {
+    content: ''; width: 30px; height: 1px;
+    background: var(--accent-dark);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--primary);
+  }
+  .section-title em {
+    font-style: italic; color: var(--accent-dark);
+  }
+
+  /* ===== CARDS ===== */
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 36px 30px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative; overflow: hidden;
+  }
+  .feature-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+  .feature-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-light);
+    box-shadow: 0 20px 50px rgba(15, 44, 94, 0.1);
+  }
+  .feature-card:hover::before { transform: scaleX(1); }
+  .feature-icon {
+    width: 60px; height: 60px;
+    background: var(--bg-warm);
+    color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    border-radius: 50%;
+    margin-bottom: 24px;
+    transition: all 0.4s ease;
+  }
+  .feature-card:hover .feature-icon {
+    background: var(--primary); color: var(--accent);
+    transform: rotate(-5deg) scale(1.1);
+  }
+
+  /* ===== STATS ===== */
+  .stats-section {
+    background: var(--primary);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-section::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  /* ===== PROGRAM CARDS ===== */
+  .program-card {
+    position: relative; overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: all 0.5s ease;
+  }
+  .program-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-6px);
+    box-shadow: 0 25px 60px rgba(15, 44, 94, 0.12);
+  }
+  .program-image {
+    height: 240px; overflow: hidden; position: relative;
+  }
+  .program-image img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .program-card:hover .program-image img { transform: scale(1.08); }
+  .program-image::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(10, 27, 61, 0.6) 100%);
+  }
+  .program-level {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--accent); color: var(--primary);
+    padding: 4px 12px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    z-index: 2;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 12px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--primary-soft), transparent);
+  }
+  .timeline-item { position: relative; padding-bottom: 50px; }
+  .timeline-item::before {
+    content: ''; position: absolute;
+    left: -34px; top: 6px;
+    width: 14px; height: 14px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  .timeline-item:hover::before {
+    background: var(--accent);
+    transform: scale(1.3);
+  }
+  .timeline-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; color: var(--accent-dark);
+    font-weight: 600; letter-spacing: 0.1em;
+  }
+
+  /* ===== GALLERY ===== */
+  .gallery-item {
+    overflow: hidden; position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    background: #fff;
+    border: 1px solid var(--border);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10, 27, 61, 0.95) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.4s ease;
+    display: flex; align-items: flex-end; padding: 24px;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay h4 {
+    color: var(--accent);
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase; font-weight: 700;
+    transform: translateY(20px);
+    transition: transform 0.4s ease 0.1s;
+  }
+  .gallery-overlay p {
+    color: #fff; font-size: 18px;
+    font-family: 'Playfair Display', serif;
+    transform: translateY(20px);
+    transition: transform 0.4s ease 0.2s;
+  }
+  .gallery-item:hover .gallery-overlay h4,
+  .gallery-item:hover .gallery-overlay p { transform: translateY(0); }
+
+  /* ===== FACILITY CARDS ===== */
+  .facility-card {
+    position: relative; overflow: hidden;
+    height: 400px;
+    cursor: pointer;
+  }
+  .facility-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  .facility-card:hover img { transform: scale(1.08); }
+  .facility-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top,
+      rgba(10, 27, 61, 0.95) 0%,
+      rgba(10, 27, 61, 0.4) 50%,
+      transparent 100%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 32px; color: #fff;
+  }
+  .facility-card .facility-icon {
+    width: 50px; height: 50px;
+    background: var(--accent); color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    transform: translateY(20px); opacity: 0;
+    transition: all 0.4s ease;
+  }
+  .facility-card:hover .facility-icon { transform: translateY(0); opacity: 1; }
+  .facility-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .facility-card p {
+    color: var(--accent-light);
+    font-size: 14px; line-height: 1.6;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+  .facility-card:hover p { max-height: 100px; }
+
+  /* ===== ADMISSION STEPS ===== */
+  .step-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 36px 28px;
+    position: relative;
+    transition: all 0.4s ease;
+  }
+  .step-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(15, 44, 94, 0.08);
+  }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px; font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .step-arrow {
+    position: absolute; right: -20px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-size: 24px;
+    z-index: 2;
+  }
+
+  /* ===== FORM ===== */
+  .form-input {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--card);
+    box-shadow: 0 0 0 3px rgba(15, 44, 94, 0.05);
+  }
+  .form-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px; display: block;
+  }
+
+  /* ===== FACEBOOK FEED ===== */
+  .fb-post-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .fb-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(15, 44, 94, 0.1);
+  }
+  .fb-post-img {
+    height: 220px;
+    overflow: hidden;
+    background: #f1f5f9;
+  }
+  .fb-post-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .fb-post-card:hover .fb-post-img img { transform: scale(1.03); }
+  .fb-post-body {
+    padding: 20px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--primary);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  footer::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(58, 105, 189, 0.2) 0%, transparent 50%);
+  }
+  .footer-link {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+    cursor: pointer;
+  }
+  .footer-link:hover { color: var(--accent); transform: translateX(4px); }
+  .footer-link i { font-size: 10px; opacity: 0; transition: opacity 0.3s ease; }
+  .footer-link:hover i { opacity: 1; }
+
+  .social-icon {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  .social-icon:hover {
+    background: var(--accent); color: var(--primary);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  /* ===== BACK TO TOP ===== */
+  #back-to-top {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 48px; height: 48px;
+    background: var(--primary);
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    opacity: 0; visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    border: 1px solid var(--accent);
+  }
+  #back-to-top.visible { opacity: 1; visibility: visible; }
+  #back-to-top:hover {
+    background: var(--accent); color: var(--primary);
+    transform: translateY(-4px);
+  }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed; top: 100px; right: 30px;
+    background: var(--primary); color: #fff;
+    padding: 16px 24px;
+    border-left: 3px solid var(--accent);
+    box-shadow: 0 10px 40px rgba(15, 44, 94, 0.2);
+    transform: translateX(120%);
+    transition: transform 0.4s ease;
+    z-index: 200;
+    display: flex; align-items: center; gap: 12px;
+    max-width: 360px;
+  }
+  .toast.show { transform: translateX(0); }
+  .toast i { color: var(--accent); }
+
+  /* ===== MOBILE MENU ===== */
+  .mobile-menu {
+    position: fixed; top: 0; right: 0;
+    width: 100%; max-width: 380px;
+    height: 100vh;
+    background: var(--primary);
+    color: #fff;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1100;
+    padding: 80px 40px 40px;
+    overflow-y: auto;
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0; visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 1050;
+  }
+  .mobile-menu-overlay.open { opacity: 1; visibility: visible; }
+  .mobile-nav-link {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .mobile-nav-link:hover {
+    color: var(--accent);
+    padding-left: 12px;
+  }
+
+  /* ===== UTILITY ===== */
+  .text-balance { text-wrap: balance; }
+  .divider-ornament {
+    display: flex; align-items: center; gap: 16px;
+    color: var(--accent);
+  }
+  .divider-ornament::before, .divider-ornament::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+  }
+
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 120px; line-height: 1;
+    color: var(--accent);
+    opacity: 0.3;
+  }
+
+  @media (max-width: 768px) {
+    .step-arrow { display: none; }
+    .hero { min-height: 80vh; }
+    .logo-img { height: 44px; }
+  }
+
+  ::selection { background: var(--accent); color: var(--primary); }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg-warm); }
+  ::-webkit-scrollbar-thumb { background: var(--primary-soft); border-radius: 5px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+</style>
 </head>
 <body>
 
 <!-- ===== LOADER ===== -->
 <div id="loader">
   <div class="loader-crest">
-    <img src="images/logo.png" alt="Thanet Hall School Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+    <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Thanet Hall School Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
   </div>
 </div>
 
@@ -26,7 +715,7 @@
 <nav id="navbar">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
     <div class="logo flex items-center gap-3" data-page="home">
-      <img src="images/logo.png" alt="Thanet Hall School Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+      <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Thanet Hall School Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
       <div class="hidden sm:block">
         <div class="font-display text-lg leading-tight font-bold" style="color: var(--primary);">Thanet Hall School</div>
         <div class="text-[10px] tracking-[0.25em] uppercase" style="color: var(--accent-dark);">Pursuit for Knowledge</div>
@@ -64,7 +753,7 @@
     <i class="fas fa-times"></i>
   </button>
   <div class="flex items-center gap-3 mb-10">
-    <img src="images/logo.png" alt="Logo" class="h-14 w-auto rounded-full bg-white p-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+    <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Logo" class="h-14 w-auto rounded-full bg-white p-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
     <div>
       <div class="font-display text-lg font-bold">Thanet Hall School</div>
       <div class="text-[10px] tracking-[0.25em] uppercase" style="color: var(--accent);">Pursuit for Knowledge</div>
@@ -190,1092 +879,4 @@
   <!-- WHY CHOOSE US -->
   <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="text-center max-w-3xl mx-auto mb-20">
-        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Why Parents Choose Us</p>
-        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
-          An education built on <em>strong</em> foundations.
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-book-open"></i></div>
-          <h3 class="font-display text-2xl font-bold mb-3" style="color: var(--primary);">Academic Excellence</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">
-            Rigorous curriculum aligned with the Punjab Board, ensuring outstanding Matric results year after year.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-mosque"></i></div>
-          <h3 class="font-display text-2xl font-bold mb-3" style="color: var(--primary);">Islamic Values</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">
-            Integration of Islamic teachings, Nazra Quran, and character building to nurture responsible citizens.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3 class="font-display text-2xl font-bold mb-3" style="color: var(--primary);">Modern Facilities</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">
-            Well-equipped science labs, computer labs, and smart classrooms to enhance the learning experience.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-          <h3 class="font-display text-2xl font-bold mb-3" style="color: var(--primary);">Expert Faculty</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">
-            Highly qualified and experienced teachers dedicated to bringing out the best in every single student.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS SECTION -->
-  <section class="stats-section py-24 lg:py-32">
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 text-center stagger">
-        <div>
-          <div class="stat-num mb-3" data-count="25" data-suffix="+">0</div>
-          <div class="text-xs uppercase tracking-[0.3em]" style="color: rgba(255,255,255,0.6);">Years Serving</div>
-        </div>
-        <div>
-          <div class="stat-num mb-3" data-count="1200" data-suffix="+">0</div>
-          <div class="text-xs uppercase tracking-[0.3em]" style="color: rgba(255,255,255,0.6);">Students</div>
-        </div>
-        <div>
-          <div class="stat-num mb-3" data-count="60">0</div>
-          <div class="text-xs uppercase tracking-[0.3em]" style="color: rgba(255,255,255,0.6);">Expert Faculty</div>
-        </div>
-        <div>
-          <div class="stat-num mb-3" data-count="100" data-suffix="%">0</div>
-          <div class="text-xs uppercase tracking-[0.3em]" style="color: rgba(255,255,255,0.6);">Matric Pass Rate</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROGRAMS PREVIEW -->
-  <section class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="flex flex-wrap items-end justify-between gap-8 mb-16">
-        <div class="max-w-2xl">
-          <p class="section-eyebrow mb-6 reveal">Our Programs</p>
-          <h2 class="section-title reveal" style="transition-delay: 0.1s;">
-            Pathways for every <em>stage</em> of growth.
-          </h2>
-        </div>
-        <button class="btn-outline reveal" data-page="academics" style="transition-delay: 0.2s;">
-          <span>All Programs</span>
-          <i class="fas fa-arrow-right"></i>
-        </button>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
-        <div class="program-card">
-          <div class="program-image">
-            <span class="program-level">Playgroup - Prep</span>
-            <img src="https://images.unsplash.com/photo-1564429238817-393bd4286b2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Early Years" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Early+Years';">
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Early Years</h3>
-            <p class="text-sm" style="color: var(--muted);">Play-based foundational learning for young minds.</p>
-          </div>
-        </div>
-        <div class="program-card">
-          <div class="program-image">
-            <span class="program-level">Class 1 - 5</span>
-            <img src="https://images.unsplash.com/photo-1610484826917-0f101a7a4997?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Primary School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Primary+School';">
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Primary School</h3>
-            <p class="text-sm" style="color: var(--muted);">Building strong literacy, numeracy, and core skills.</p>
-          </div>
-        </div>
-        <div class="program-card">
-          <div class="program-image">
-            <span class="program-level">Class 6 - 8</span>
-            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Middle School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Middle+School';">
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Middle School</h3>
-            <p class="text-sm" style="color: var(--muted);">Critical thinking and subject specialization begins.</p>
-          </div>
-        </div>
-        <div class="program-card">
-          <div class="program-image">
-            <span class="program-level">Class 9 - 10</span>
-            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Secondary School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Matric';">
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Secondary (Matric)</h3>
-            <p class="text-sm" style="color: var(--muted);">Science & Computer Science groups with top results.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FACEBOOK FEED SECTION -->
-  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Stay Connected</p>
-        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
-          Latest from our <em>Facebook</em> page.
-        </h2>
-        <p class="mt-6 reveal" style="color: var(--muted); transition-delay: 0.2s;">
-          Follow our latest events, announcements, and student achievements.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6 stagger" style="align-items: start;">
-        <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="fb-post-card block">
-          <div class="fb-post-img">
-            <img src="images/trophy ceremony.jpg" alt="Trophy Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Trophy+Ceremony';">
-          </div>
-          <div class="fb-post-body">
-            <div class="flex items-center gap-2 mb-4">
-              <i class="fab fa-facebook" style="color: var(--primary);"></i>
-              <span class="text-xs font-semibold" style="color: var(--muted);">Posted on Facebook</span>
-            </div>
-            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Trophy Ceremony</h4>
-            <p class="text-sm" style="color: var(--muted);">Celebrating the outstanding achievements of our brilliant students.</p>
-          </div>
-        </a>
-        <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="fb-post-card block">
-          <div class="fb-post-img">
-            <img src="images/achievement - award.jpg" alt="Achievement Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Achievement+Award';">
-          </div>
-          <div class="fb-post-body">
-            <div class="flex items-center gap-2 mb-4">
-              <i class="fab fa-facebook" style="color: var(--primary);"></i>
-              <span class="text-xs font-semibold" style="color: var(--muted);">Posted on Facebook</span>
-            </div>
-            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Achievement Awards</h4>
-            <p class="text-sm" style="color: var(--muted);">A insightful session with a esteemed guest speaker at TDHS.</p>
-          </div>
-        </a>
-        <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="fb-post-card block">
-          <div class="fb-post-img">
-            <img src="images/certification presentation.jpg" alt="Certification Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Certification';">
-          </div>
-          <div class="fb-post-body">
-            <div class="flex items-center gap-2 mb-4">
-              <i class="fab fa-facebook" style="color: var(--primary);"></i>
-              <span class="text-xs font-semibold" style="color: var(--muted);">Posted on Facebook</span>
-            </div>
-            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Certification Presentation</h4>
-            <p class="text-sm" style="color: var(--muted);">New Session 2024 Admissions are open from Playgroup to Matric.</p>
-          </div>
-        </a>
-      </div>
-
-      <div class="text-center mt-12">
-        <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="btn-outline">
-          <i class="fab fa-facebook-f"></i>
-          <span>Follow Us on Facebook</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRINCIPAL'S MESSAGE -->
-  <section class="py-24 lg:py-32">
-    <div class="max-w-5xl mx-auto px-6 lg:px-10">
-      <div class="text-center mb-12">
-        <div class="divider-ornament reveal">
-          <i class="fas fa-feather-alt"></i>
-        </div>
-      </div>
-      <div class="text-center reveal">
-        <div class="quote-mark mb-4">"</div>
-        <p class="font-display text-2xl md:text-3xl lg:text-4xl leading-relaxed font-medium mb-10 text-balance" style="color: var(--primary);">
-          At Thanet Hall School, we don't just prepare students for exams; 
-          we prepare them for life. Our mission is to create lifelong learners 
-          who are grounded in faith and equipped with the skills to lead tomorrow.
-        </p>
-        <div class="flex items-center justify-center gap-4">
-          <div class="w-16 h-16 rounded-full overflow-hidden border-2" style="border-color: var(--accent);">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Pakistani Female Principal" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=Principal';">
-          </div>
-          <div class="text-left">
-            <div class="font-display text-lg font-bold" style="color: var(--primary);">Mrs. Ayesha Khan</div>
-            <div class="text-xs uppercase tracking-[0.2em]" style="color: var(--accent-dark);">Principal · M.Ed, M.Phil</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-24 lg:py-32">
-    <div class="max-w-5xl mx-auto px-6 lg:px-10">
-      <div class="relative overflow-hidden p-12 lg:p-20 text-center" style="background: var(--primary); color: #fff;">
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 30% 30%, var(--accent) 0%, transparent 50%), radial-gradient(circle at 70% 70%, var(--accent) 0%, transparent 50%);"></div>
-        <div class="relative z-10">
-          <p class="hero-eyebrow mb-6 reveal" style="justify-content: center;">Admissions 2025-2026</p>
-          <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 reveal" style="transition-delay: 0.1s;">
-            Give your child a<br><em style="color: var(--accent); font-style: italic;">foundation</em> that lasts a lifetime.
-          </h2>
-          <p class="text-lg mb-10 max-w-2xl mx-auto reveal" style="color: rgba(255,255,255,0.8); transition-delay: 0.2s;">
-            Schedule a campus visit today and discover why parents in Sabzazar trust Thanet Hall School for their children's future.
-          </p>
-          <button class="btn-primary reveal" data-page="admissions" style="transition-delay: 0.3s;">
-            <span>Schedule a Visit</span>
-            <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</section>
-
-<!-- ============================================ -->
-<!-- ============ ABOUT PAGE ==================== -->
-<!-- ============================================ -->
-<section id="page-about" class="page">
-
-  <div class="relative py-24 lg:py-32 overflow-hidden" style="background: var(--bg-deep); color: #fff;">
-    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-    <div class="orb orb-1"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-      <p class="hero-eyebrow mb-6 reveal">Our Story</p>
-      <h1 class="hero-title mb-6 reveal" style="transition-delay: 0.1s;">
-        Built on <em>tradition</em>.<br>Driven by purpose.
-      </h1>
-      <p class="text-lg md:text-xl max-w-2xl reveal" style="color: rgba(255,255,255,0.7); transition-delay: 0.2s;">
-        Over two and a half decades of nurturing learners who go on to lead lives of meaning, achievement, and service.
-      </p>
-    </div>
-  </div>
-
-  <!-- HISTORY -->
-  <section class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
-        <div>
-          <p class="section-eyebrow mb-6 reveal">Our Journey</p>
-          <h2 class="section-title mb-8 reveal" style="transition-delay: 0.1s;">
-            From a small institution to a <em>thriving</em> campus.
-          </h2>
-          <p class="text-lg leading-relaxed mb-6 reveal" style="color: var(--muted); transition-delay: 0.2s;">
-            Thanet Hall School opened its doors in Sabzazar in 1998 with a vision to provide quality, 
-            value-based education to the local community. What began as a small institution 
-            has grown into one of the most respected schools in the area.
-          </p>
-          <p class="text-lg leading-relaxed reveal" style="color: var(--muted); transition-delay: 0.3s;">
-            Through every stage of growth, we have remained anchored to our founding conviction: 
-            that every child deserves an education that honors their individuality while 
-            demanding their best.
-          </p>
-        </div>
-
-        <div class="timeline reveal reveal-right">
-          <div class="timeline-item">
-            <div class="timeline-year">1998</div>
-            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Foundation</h4>
-            <p class="text-sm" style="color: var(--muted);">Thanet Hall School established in Sabzazar Scheme, Lahore.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2005</div>
-            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">First Matric Batch</h4>
-            <p class="text-sm" style="color: var(--muted);">Our inaugural Class 10 students achieve 100% pass rate in the Punjab Board examinations.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2012</div>
-            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Campus Expansion</h4>
-            <p class="text-sm" style="color: var(--muted);">New purpose-built block added with advanced science laboratories and library.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2018</div>
-            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Digital Integration</h4>
-            <p class="text-sm" style="color: var(--muted);">Smart classroom technology and digital learning platforms rolled out.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2024</div>
-            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">STEM Center Launch</h4>
-            <p class="text-sm" style="color: var(--muted);">Dedicated STEM and robotics lab opened to foster innovation.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MISSION VISION VALUES -->
-  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">What Drives Us</p>
-        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
-          Mission, vision, and the <em>values</em> we live by.
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6 stagger">
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
-          <h3 class="font-display text-2xl font-bold mb-4" style="color: var(--primary);">Our Mission</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">
-            To provide a rigorous, inclusive, and joyful education that develops in each student the knowledge, skills, and character needed to thrive in a complex world.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-binoculars"></i></div>
-          <h3 class="font-display text-2xl font-bold mb-4" style="color: var(--primary);">Our Vision</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">
-            To be the most trusted school in Lahore for families seeking an education that balances academic distinction with ethical depth and human warmth.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-gem"></i></div>
-          <h3 class="font-display text-2xl font-bold mb-4" style="color: var(--primary);">Our Values</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">
-            Integrity, curiosity, compassion, excellence, and respect — the five commitments that guide every decision we make and every relationship we build.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LEADERSHIP -->
-  <section class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Leadership Team</p>
-        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
-          Educators who <em>lead</em> with heart.
-        </h2>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
-        <div class="text-center group">
-          <div class="relative overflow-hidden mb-6 aspect-square">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Principal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Principal';">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </div>
-          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Mrs. Ayesha Khan</h4>
-          <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Principal</p>
-        </div>
-        <div class="text-center group">
-          <div class="relative overflow-hidden mb-6 aspect-square">
-            <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Vice Principal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=VP';">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </div>
-          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Mr. Kamran Ali</h4>
-          <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Vice Principal</p>
-        </div>
-        <div class="text-center group">
-          <div class="relative overflow-hidden mb-6 aspect-square">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Head of Primary" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Primary';">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </div>
-          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Ms. Fariha Sheikh</h4>
-          <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Head of Primary</p>
-        </div>
-        <div class="text-center group">
-          <div class="relative overflow-hidden mb-6 aspect-square">
-            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Head of Secondary" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Secondary';">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </div>
-          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Dr. Saeed Ahmad</h4>
-          <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Head of Secondary</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</section>
-
-<!-- ============================================ -->
-<!-- ============ ACADEMICS PAGE ================ -->
-<!-- ============================================ -->
-<section id="page-academics" class="page">
-
-  <div class="relative py-24 lg:py-32 overflow-hidden" style="background: var(--bg-deep); color: #fff;">
-    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-    <div class="orb orb-3"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-      <p class="hero-eyebrow mb-6 reveal">Academics</p>
-      <h1 class="hero-title mb-6 reveal" style="transition-delay: 0.1s;">
-        A curriculum that <em>challenges</em> and inspires.
-      </h1>
-      <p class="text-lg md:text-xl max-w-2xl reveal" style="color: rgba(255,255,255,0.7); transition-delay: 0.2s;">
-        Four distinct academic stages, each thoughtfully designed to meet students where they are and propel them toward who they can become.
-      </p>
-    </div>
-  </div>
-
-  <section class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 space-y-20">
-
-      <!-- Early Years -->
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="reveal">
-          <span class="inline-block text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4" style="background: var(--accent); color: var(--primary);">Playgroup - Prep</span>
-          <h2 class="section-title mb-6">Early Years <em>Program</em></h2>
-          <p class="text-lg leading-relaxed mb-6" style="color: var(--muted);">
-            Our Early Years program provides a safe, nurturing, and stimulating environment where young children begin their educational journey. Through play-based learning, storytelling, and hands-on activities, we develop language, motor skills, and social-emotional foundations.
-          </p>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Play-based, child-centered pedagogy</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Phonics and early literacy foundations</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Dedicated early-years activity room</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Safe and colorful learning environment</span></li>
-          </ul>
-        </div>
-        <div class="relative overflow-hidden reveal reveal-right aspect-[4/3]">
-          <img src="https://images.unsplash.com/photo-1564429238817-393bd4286b2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Early Years" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Early+Years';">
-        </div>
-      </div>
-
-      <!-- Primary -->
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="relative overflow-hidden reveal reveal-left aspect-[4/3] order-1 lg:order-none">
-          <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Primary" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Primary+School';">
-        </div>
-        <div class="reveal">
-          <span class="inline-block text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4" style="background: var(--accent); color: var(--primary);">Class 1 - 5</span>
-          <h2 class="section-title mb-6">Primary <em>School</em></h2>
-          <p class="text-lg leading-relaxed mb-6" style="color: var(--muted);">
-            The primary years are where curiosity meets discipline. Our students master core literacy and numeracy while exploring science, social studies, and Islamic studies. We emphasize reading habits, mental mathematics, and inquiry-based learning.
-          </p>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Core subjects aligned with national curriculum</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Daily reading and library periods</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Computer literacy from Class 3</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Nazra Quran and Islamic etiquettes</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Middle -->
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="reveal">
-          <span class="inline-block text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4" style="background: var(--accent); color: var(--primary);">Class 6 - 8</span>
-          <h2 class="section-title mb-6">Middle <em>School</em></h2>
-          <p class="text-lg leading-relaxed mb-6" style="color: var(--muted);">
-            As students enter adolescence, our program grows more rigorous and reflective. Specialist teachers guide them through advanced mathematics, laboratory sciences, and analytical writing. Critical thinking and collaboration become explicit goals.
-          </p>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Subject-specialist teaching faculty</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Physics, chemistry, and biology labs</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Pre-Matric stream selection guidance</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Public speaking and debate program</span></li>
-          </ul>
-        </div>
-        <div class="relative overflow-hidden reveal reveal-right aspect-[4/3]">
-          <img src="https://images.unsplash.com/photo-1610484826917-0f101a7a4997?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Middle School" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Middle+School';">
-        </div>
-      </div>
-
-      <!-- Secondary -->
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="relative overflow-hidden reveal reveal-left aspect-[4/3] order-1 lg:order-none">
-          <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Secondary" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Secondary';">
-        </div>
-        <div class="reveal">
-          <span class="inline-block text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4" style="background: var(--accent); color: var(--primary);">Class 9 - 10</span>
-          <h2 class="section-title mb-6">Secondary <em>Matric</em></h2>
-          <p class="text-lg leading-relaxed mb-6" style="color: var(--muted);">
-            Our secondary program prepares students for the Punjab Board Matriculation examinations with structured rigor. Students choose between Science and Computer Science groups, receiving focused coaching and past-paper practice that has produced consistent top-tier results.
-          </p>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Science and Computer Science groups</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Intensive board examination preparation</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Career counseling and college guidance</span></li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>100% pass rate in recent boards</span></li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CURRICULUM HIGHLIGHTS -->
-  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Beyond the Textbook</p>
-        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
-          Enrichment that <em>rounds</em> the whole child.
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-quran"></i></div>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Islamic Studies</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">Nazra Quran, Hifz support, and character education rooted in Islamic values.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Computer Science</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">Coding fundamentals, MS Office mastery, and digital citizenship from Class 3.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-flask"></i></div>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Science Labs</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">Hands-on experimentation in fully equipped physics, chemistry, and biology labs.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-futbol"></i></div>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Sports & PE</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">Cricket, football, badminton, and athletics with annual sports galas.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-palette"></i></div>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Arts & Crafts</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">Drawing, painting, calligraphy, and craft workshops throughout the year.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-microphone"></i></div>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Debate & Drama</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">Urdu and English debate societies, theater productions, and recitation contests.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</section>
-
-<!-- ============================================ -->
-<!-- ============ CAMPUS PAGE =================== -->
-<!-- ============================================ -->
-<section id="page-campus" class="page">
-
-  <div class="relative py-24 lg:py-32 overflow-hidden" style="background: var(--bg-deep); color: #fff;">
-    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-    <div class="orb orb-1"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-      <p class="hero-eyebrow mb-6 reveal">Campus Life</p>
-      <h1 class="hero-title mb-6 reveal" style="transition-delay: 0.1s;">
-        Spaces that <em>inspire</em> learning.
-      </h1>
-      <p class="text-lg md:text-xl max-w-2xl reveal" style="color: rgba(255,255,255,0.7); transition-delay: 0.2s;">
-        A campus designed for curiosity — from science labs to sports fields, every corner invites students to explore, create, and belong.
-      </p>
-    </div>
-  </div>
-
-  <!-- FACILITIES -->
-  <section class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Our Facilities</p>
-        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
-          Explore our <em>campus</em> highlights.
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
-        <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Science Labs" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Science+Labs';">
-          <div class="facility-overlay">
-            <div class="facility-icon"><i class="fas fa-vial"></i></div>
-            <h3>Science Laboratories</h3>
-            <p>Separate physics, chemistry, and biology labs equipped for hands-on experimentation.</p>
-          </div>
-        </div>
-        <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Library" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Library';">
-          <div class="facility-overlay">
-            <div class="facility-icon"><i class="fas fa-book"></i></div>
-            <h3>Central Library</h3>
-            <p>Thousands of books, reference materials, and quiet study spaces for all grades.</p>
-          </div>
-        </div>
-        <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Computer Lab" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Computer+Lab';">
-          <div class="facility-overlay">
-            <div class="facility-icon"><i class="fas fa-desktop"></i></div>
-            <h3>Computer Lab</h3>
-            <p>Modern workstations with high-speed internet and licensed educational software.</p>
-          </div>
-        </div>
-        <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1531411351211-48919ccf8457?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sports" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Sports';">
-          <div class="facility-overlay">
-            <div class="facility-icon"><i class="fas fa-running"></i></div>
-            <h3>Sports Complex</h3>
-            <p>Cricket nets, football field, badminton court, and indoor games facilities.</p>
-          </div>
-        </div>
-        <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Auditorium" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Auditorium';">
-          <div class="facility-overlay">
-            <div class="facility-icon"><i class="fas fa-theater-masks"></i></div>
-            <h3>Auditorium</h3>
-            <p>A spacious hall for assemblies, debates, performances, and school events.</p>
-          </div>
-        </div>
-        <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Classrooms" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Classrooms';">
-          <div class="facility-overlay">
-            <div class="facility-icon"><i class="fas fa-chalkboard"></i></div>
-            <h3>Smart Classrooms</h3>
-            <p>Tech-enabled classrooms designed for interactive and engaging learning.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Photo Gallery</p>
-        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
-          Moments from our <em>community</em>.
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 reveal" style="align-items: start;">
-        
-        <!-- Local Images Implemented Here -->
-        <div class="gallery-item aspect-[4/5]">
-          <img src="images/achievement - award.jpg" alt="Achievement Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Achievement';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Achievement Award</p></div></div>
-        </div>
-        <div class="gallery-item aspect-[4/5]">
-          <img src="images/activity - heavy - light - 1.jpg" alt="Learning Heavy & Light" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Heavy+%26+Light';">
-          <div class="gallery-overlay"><div><h4>Activity</h4><p>Learning Heavy & Light</p></div></div>
-        </div>
-        <div class="gallery-item aspect-[4/5]">
-          <img src="images/certification presentation.jpg" alt="Certification Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Certification';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Certification Presentation</p></div></div>
-        </div>
-        <div class="gallery-item aspect-[4/5]">
-          <img src="images/trophy ceremony.jpg" alt="Trophy Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Trophy';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Trophy Ceremony</p></div></div>
-        </div>
-        
-        <!-- Placeholders to complete the 12-grid layout beautifully -->
-        <div class="gallery-item aspect-[4/5]">
-          <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Main School Building" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Campus';">
-          <div class="gallery-overlay"><div><h4>Campus</h4><p>Main School Building</p></div></div>
-        </div>
-        <div class="gallery-item aspect-[4/5]">
-          <img src="https://images.unsplash.com/photo-1523580494893-64f7d55ddcbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Annual Day" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Annual+Day';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Annual Day 2024</p></div></div>
-        </div>
-        <div class="gallery-item aspect-[4/5]">
-          <img src="https://images.unsplash.com/photo-1610484826917-0f101a7a4997?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Classroom" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Classroom';">
-          <div class="gallery-overlay"><div><h4>Classroom</h4><p>Primary Reading Hour</p></div></div>
-        </div>
-        <div class="gallery-item aspect-[4/5]">
-          <img src="https://images.unsplash.com/photo-1531411351211-48919ccf8457?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sports" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Sports';">
-          <div class="gallery-overlay"><div><h4>Sports</h4><p>Inter-Class Cricket</p></div></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-</section>
-
-<!-- ============================================ -->
-<!-- ============ ADMISSIONS PAGE =============== -->
-<!-- ============================================ -->
-<section id="page-admissions" class="page">
-
-  <div class="relative py-24 lg:py-32 overflow-hidden" style="background: var(--bg-deep); color: #fff;">
-    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-    <div class="orb orb-2"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-      <p class="hero-eyebrow mb-6 reveal">Admissions 2025-2026</p>
-      <h1 class="hero-title mb-6 reveal" style="transition-delay: 0.1s;">
-        Begin your <em>journey</em> with us.
-      </h1>
-      <p class="text-lg md:text-xl max-w-2xl reveal" style="color: rgba(255,255,255,0.7); transition-delay: 0.2s;">
-        A clear, supportive admission process designed to help your family make the right choice with confidence.
-      </p>
-    </div>
-  </div>
-
-  <section class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">How to Apply</p>
-        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
-          Four simple <em>steps</em> to enrollment.
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative stagger">
-        <div class="step-card">
-          <span class="step-num">01</span>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Inquiry</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">Submit the online inquiry form or visit our admissions office to receive the prospectus.</p>
-          <i class="fas fa-chevron-right step-arrow hidden lg:block"></i>
-        </div>
-        <div class="step-card">
-          <span class="step-num">02</span>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Assessment</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">Age-appropriate entrance evaluation in English, Mathematics, and Urdu for Class 1 onwards.</p>
-          <i class="fas fa-chevron-right step-arrow hidden lg:block"></i>
-        </div>
-        <div class="step-card">
-          <span class="step-num">03</span>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Interview</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">A friendly conversation with parents and the student to understand aspirations and fit.</p>
-          <i class="fas fa-chevron-right step-arrow hidden lg:block"></i>
-        </div>
-        <div class="step-card">
-          <span class="step-num">04</span>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Enrollment</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">Receive offer of admission, submit required documents, and complete fee formalities.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
-
-        <div class="reveal">
-          <p class="section-eyebrow mb-6">Required Documents</p>
-          <h2 class="section-title mb-8">What to <em>bring</em>.</h2>
-          <div class="bg-white p-8 border" style="border-color: var(--border);">
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3 pb-4 border-b" style="border-color: var(--border);">
-                <i class="fas fa-file-alt mt-1" style="color: var(--accent-dark);"></i>
-                <div><strong style="color: var(--primary);">Completed Admission Form</strong><br><span class="text-sm" style="color: var(--muted);">Available at the admissions office.</span></div>
-              </li>
-              <li class="flex items-start gap-3 pb-4 border-b" style="border-color: var(--border);">
-                <i class="fas fa-id-card mt-1" style="color: var(--accent-dark);"></i>
-                <div><strong style="color: var(--primary);">4 Passport Photographs</strong><br><span class="text-sm" style="color: var(--muted);">Recent, with white background.</span></div>
-              </li>
-              <li class="flex items-start gap-3 pb-4 border-b" style="border-color: var(--border);">
-                <i class="fas fa-certificate mt-1" style="color: var(--accent-dark);"></i>
-                <div><strong style="color: var(--primary);">B-Form / Birth Certificate</strong><br><span class="text-sm" style="color: var(--muted);">NADRA-issued, original and photocopy.</span></div>
-              </li>
-              <li class="flex items-start gap-3 pb-4 border-b" style="border-color: var(--border);">
-                <i class="fas fa-school mt-1" style="color: var(--accent-dark);"></i>
-                <div><strong style="color: var(--primary);">School Leaving Certificate</strong><br><span class="text-sm" style="color: var(--muted);">From previous school (for Class 2 onwards).</span></div>
-              </li>
-              <li class="flex items-start gap-3">
-                <i class="fas fa-file-signature mt-1" style="color: var(--accent-dark);"></i>
-                <div><strong style="color: var(--primary);">Last Report Card</strong><br><span class="text-sm" style="color: var(--muted);">Most recent academic record.</span></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="reveal reveal-right">
-          <p class="section-eyebrow mb-6">Fee Structure 2025-2026</p>
-          <h2 class="section-title mb-8">Transparent <em>pricing</em>.</h2>
-          <div class="space-y-4">
-            <div class="bg-white p-6 border flex justify-between items-center hover:shadow-lg transition-shadow" style="border-color: var(--border);">
-              <div>
-                <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Playgroup - Prep</h4>
-                <p class="text-sm" style="color: var(--muted);">Monthly tuition</p>
-              </div>
-              <div class="text-right">
-                <div class="font-display text-2xl" style="color: var(--accent-dark);">Rs. 3,500</div>
-                <div class="text-xs uppercase tracking-[0.2em]" style="color: var(--muted);">per month</div>
-              </div>
-            </div>
-            <div class="bg-white p-6 border flex justify-between items-center hover:shadow-lg transition-shadow" style="border-color: var(--border);">
-              <div>
-                <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Class 1 - 5</h4>
-                <p class="text-sm" style="color: var(--muted);">Monthly tuition</p>
-              </div>
-              <div class="text-right">
-                <div class="font-display text-2xl" style="color: var(--accent-dark);">Rs. 4,500</div>
-                <div class="text-xs uppercase tracking-[0.2em]" style="color: var(--muted);">per month</div>
-              </div>
-            </div>
-            <div class="bg-white p-6 border flex justify-between items-center hover:shadow-lg transition-shadow" style="border-color: var(--border);">
-              <div>
-                <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Class 6 - 8</h4>
-                <p class="text-sm" style="color: var(--muted);">Monthly tuition</p>
-              </div>
-              <div class="text-right">
-                <div class="font-display text-2xl" style="color: var(--accent-dark);">Rs. 5,500</div>
-                <div class="text-xs uppercase tracking-[0.2em]" style="color: var(--muted);">per month</div>
-              </div>
-            </div>
-            <div class="bg-white p-6 border flex justify-between items-center hover:shadow-lg transition-shadow" style="border-color: var(--border);">
-              <div>
-                <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Class 9 - 10</h4>
-                <p class="text-sm" style="color: var(--muted);">Monthly tuition</p>
-              </div>
-              <div class="text-right">
-                <div class="font-display text-2xl" style="color: var(--accent-dark);">Rs. 6,500</div>
-                <div class="text-xs uppercase tracking-[0.2em]" style="color: var(--muted);">per month</div>
-              </div>
-            </div>
-            <p class="text-xs pt-4" style="color: var(--muted);">One-time admission fee of Rs. 10,000 applies to all new enrollments. Annual charges of Rs. 3,000 cover examinations, ID cards, and academic resources.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- INQUIRY FORM -->
-  <section class="py-24 lg:py-32">
-    <div class="max-w-4xl mx-auto px-6 lg:px-10">
-      <div class="text-center mb-16">
-        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Start Your Application</p>
-        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
-          Send us an <em>inquiry</em>.
-        </h2>
-        <p class="mt-6 reveal" style="color: var(--muted); transition-delay: 0.2s;">Our admissions team will respond within 24 hours.</p>
-      </div>
-
-      <form id="admission-form" class="bg-white p-8 lg:p-12 border reveal" style="border-color: var(--border);">
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label class="form-label">Parent / Guardian Name</label>
-            <input type="text" class="form-input" required placeholder="Full name">
-          </div>
-          <div>
-            <label class="form-label">Contact Number</label>
-            <input type="tel" class="form-input" required placeholder="03XX-XXXXXXX">
-          </div>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label class="form-label">Email Address</label>
-            <input type="email" class="form-input" required placeholder="you@example.com">
-          </div>
-          <div>
-            <label class="form-label">Child's Age</label>
-            <input type="number" class="form-input" required placeholder="Age in years" min="3" max="16">
-          </div>
-        </div>
-        <div class="mb-6">
-          <label class="form-label">Grade of Interest</label>
-          <select class="form-input" required>
-            <option value="">Select a grade</option>
-            <option>Playgroup</option>
-            <option>Nursery</option>
-            <option>Prep</option>
-            <option>Class 1</option>
-            <option>Class 2</option>
-            <option>Class 3</option>
-            <option>Class 4</option>
-            <option>Class 5</option>
-            <option>Class 6</option>
-            <option>Class 7</option>
-            <option>Class 8</option>
-            <option>Class 9</option>
-            <option>Class 10</option>
-          </select>
-        </div>
-        <div class="mb-8">
-          <label class="form-label">Message (optional)</label>
-          <textarea class="form-input" rows="4" placeholder="Any questions or additional information..."></textarea>
-        </div>
-        <button type="submit" class="btn-primary w-full justify-center">
-          <span>Submit Inquiry</span>
-          <i class="fas fa-paper-plane"></i>
-        </button>
-      </form>
-    </div>
-  </section>
-
-</section>
-
-<!-- ============================================ -->
-<!-- ============ CONTACT PAGE ================== -->
-<!-- ============================================ -->
-<section id="page-contact" class="page">
-
-  <div class="relative py-24 lg:py-32 overflow-hidden" style="background: var(--bg-deep); color: #fff;">
-    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-    <div class="orb orb-3"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-      <p class="hero-eyebrow mb-6 reveal">Get in Touch</p>
-      <h1 class="hero-title mb-6 reveal" style="transition-delay: 0.1s;">
-        We'd love to <em>hear</em> from you.
-      </h1>
-      <p class="text-lg md:text-xl max-w-2xl reveal" style="color: rgba(255,255,255,0.7); transition-delay: 0.2s;">
-        Whether you're a prospective parent, a current family, or an alumna — our doors and inboxes are always open.
-      </p>
-    </div>
-  </div>
-
-  <section class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="grid lg:grid-cols-3 gap-6 mb-16 stagger">
-        <div class="feature-card text-center">
-          <div class="feature-icon mx-auto"><i class="fas fa-map-marker-alt"></i></div>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Visit Us</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">Main Boulevard, Sabzazar Scheme,<br>Lahore, Punjab, Pakistan</p>
-        </div>
-        <div class="feature-card text-center">
-          <div class="feature-icon mx-auto"><i class="fas fa-phone-alt"></i></div>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Call Us</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">042-3542 0000<br>0300-1234567 (Admissions)</p>
-        </div>
-        <div class="feature-card text-center">
-          <div class="feature-icon mx-auto"><i class="fas fa-envelope"></i></div>
-          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Email Us</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--muted);">info@thanethallschool.edu.pk<br>admissions@thanethallschool.edu.pk</p>
-        </div>
-      </div>
-
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
-
-        <div class="reveal">
-          <p class="section-eyebrow mb-6">Send a Message</p>
-          <h2 class="section-title mb-8">Questions? <em>Reach out.</em></h2>
-          <form id="contact-form" class="space-y-5">
-            <div class="grid md:grid-cols-2 gap-5">
-              <div>
-                <label class="form-label">Your Name</label>
-                <input type="text" class="form-input" required placeholder="Full name">
-              </div>
-              <div>
-                <label class="form-label">Email</label>
-                <input type="email" class="form-input" required placeholder="you@example.com">
-              </div>
-            </div>
-            <div>
-              <label class="form-label">Subject</label>
-              <input type="text" class="form-input" required placeholder="How can we help?">
-            </div>
-            <div>
-              <label class="form-label">Message</label>
-              <textarea class="form-input" rows="6" required placeholder="Write your message..."></textarea>
-            </div>
-            <button type="submit" class="btn-primary">
-              <span>Send Message</span>
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-        </div>
-
-        <div class="reveal reveal-right">
-          <p class="section-eyebrow mb-6">Find Us</p>
-          <h2 class="section-title mb-8">Campus <em>location</em>.</h2>
-          <div class="aspect-square lg:aspect-[4/5] overflow-hidden border" style="border-color: var(--border);">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.3834280344525!2d74.25400531513988!3d31.52302348136849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919047e5d4b3f7f%3A0x6a9b1d3e3c2b1f1f!2sSabzazar%20Scheme%2C%20Lahore!5e0!3m2!1sen!2s!4v1699999999999"
-              class="w-full h-full"
-              style="border:0;"
-              loading="lazy"
-              title="Thanet Hall School Location">
-            </iframe>
-          </div>
-          <div class="mt-6 p-6 bg-white border" style="border-color: var(--border);">
-            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Office Hours</h4>
-            <div class="grid grid-cols-2 gap-2 text-sm">
-              <span style="color: var(--muted);">Monday — Thursday</span>
-              <span style="color: var(--fg);">8:00 AM — 2:00 PM</span>
-              <span style="color: var(--muted);">Friday</span>
-              <span style="color: var(--fg);">8:00 AM — 12:00 PM</span>
-              <span style="color: var(--muted);">Saturday</span>
-              <span style="color: var(--fg);">9:00 AM — 1:00 PM</span>
-              <span style="color: var(--muted);">Sunday</span>
-              <span style="color: var(--fg);">Closed</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-</section>
-
-</main>
-
-<!-- ===== FOOTER ===== -->
-<footer class="pt-20 pb-10">
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-
-      <div>
-        <div class="flex items-center gap-3 mb-6">
-          <img src="images/logo.png" alt="Thanet Hall School Logo" class="h-14 w-auto rounded-full bg-white p-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
-          <div>
-            <div class="font-display text-lg font-bold">Thanet Hall School</div>
-            <div class="text-[10px] tracking-[0.25em] uppercase" style="color: var(--accent);">Pursuit for Knowledge</div>
-          </div>
-        </div>
-        <p class="text-sm leading-relaxed mb-6" style="color: rgba(255, 255, 255, 0.7);">
-          Illuminating minds and shaping futures in Sabzazar, Lahore. A place where every child is known, valued, and inspired.
-        </p>
-        <div class="flex gap-3">
-          <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="#" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Quick Links</h4>
-        <ul class="space-y-3">
-          <li><a class="footer-link" data-page="home"><i class="fas fa-chevron-right"></i>Home</a></li>
-          <li><a class="footer-link" data-page="about"><i class="fas fa-chevron-right"></i>About Us</a></li>
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Academics</a></li>
-          <li><a class="footer-link" data-page="campus"><i class="fas fa-chevron-right"></i>Campus Life</a></li>
-          <li><a class="footer-link" data-page="admissions"><i class="fas fa-chevron-right"></i>Admissions</a></li>
-          <li><a class="footer-link" data-page="contact"><i class="fas fa-chevron-right"></i>Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Programs</h4>
-        <ul class="space-y-3">
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Early Years</a></li>
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Primary School</a></li>
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Middle School</a></li>
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Matric (Science)</a></li>
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Islamic Studies</a></li>
-          <li><a class="footer-link" data-page="campus"><i class="fas fa-chevron-right"></i>Extracurricular</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Contact</h4>
-        <ul class="space-y-4 text-sm" style="color: rgba(255, 255, 255, 0.7);">
-          <li class="flex items-start gap-3">
-            <i class="fas fa-map-marker-alt mt-1" style="color: var(--accent);"></i>
-            <span>Main Boulevard, Sabzazar Scheme, Lahore</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fas fa-phone-alt mt-1" style="color: var(--accent);"></i>
-            <span>042-3542 0000</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fas fa-envelope mt-1" style="color: var(--accent);"></i>
-            <span>info@thanethallschool.edu.pk</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fas fa-clock mt-1" style="color: var(--accent);"></i>
-            <span>Mon — Sat: 8:00 AM — 2:00 PM</span>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4" style="border-color: rgba(212, 175, 55, 0.15);">
-      <p class="text-xs" style="color: rgba(255, 255, 255, 0.5);">© 2024 Thanet Hall School Sabzazar. All rights reserved.</p>
-      <p class="text-xs" style="color: rgba(255, 255, 255, 0.5);">Pursuit for Knowledge · Since 1998</p>
-    </div>
-  </div>
-</footer>
-
-<!-- ===== BACK TO TOP ===== -->
-<button id="back-to-top" aria-label="Back to top">
-  <i class="fas fa-arrow-up"></i>
-</button>
-
-<!-- ===== TOAST ===== -->
-<div class="toast" id="toast">
-  <i class="fas fa-check-circle"></i>
-  <span id="toast-message">Message sent successfully!</span>
-</div>
-
-<script src="js/script.js"></script>
-</body>
-</html>
+      <div class="text-center max-w-3xl mx-auto
