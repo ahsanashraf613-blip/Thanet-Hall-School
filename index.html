@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thanet Hall School Sabzazar | Pursuit for Knowledge</title>
+<meta name="description" content="Thanet Hall School Sabzazar, Lahore. Nurturing minds with quality education, modern facilities, and strong moral values from Playgroup to Matric.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== LOADER ===== -->
+<div id="loader">
+  <div class="loader-crest">
+    <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Thanet Hall School Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+  </div>
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+    <div class="logo flex items-center gap-3" data-page="home">
+      <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Thanet Hall School Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+      <div class="hidden sm:block">
+        <div class="font-display text-lg leading-tight font-bold" style="color: var(--primary);">Thanet Hall School</div>
+        <div class="text-[10px] tracking-[0.25em] uppercase" style="color: var(--accent-dark);">Pursuit for Knowledge</div>
+      </div>
+    </div>
+
+    <div class="hidden lg:flex items-center gap-8">
+      <a class="nav-link active" data-page="home">Home</a>
+      <a class="nav-link" data-page="about">About</a>
+      <a class="nav-link" data-page="academics">Academics</a>
+      <a class="nav-link" data-page="campus">Campus Life</a>
+      <a class="nav-link" data-page="admissions">Admissions</a>
+      <a class="nav-link" data-page="contact">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="hidden md:flex social-icon" style="border-color: var(--primary); color: var(--primary);">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a class="hidden md:inline-flex btn-primary" data-page="admissions" style="padding: 10px 22px; font-size: 12px;">
+        <span>Apply Now</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+      <button id="mobile-menu-btn" class="lg:hidden text-2-xl" style="color: var(--primary);" aria-label="Open menu">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu-overlay" id="mobile-overlay"></div>
+<aside class="mobile-menu" id="mobile-menu">
+  <button id="mobile-close" class="absolute top-6 right-6 text-2xl" style="color: var(--accent);" aria-label="Close menu">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="flex items-center gap-3 mb-10">
+    <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Logo" class="h-14 w-auto rounded-full bg-white p-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+    <div>
+      <div class="font-display text-lg font-bold">Thanet Hall School</div>
+      <div class="text-[10px] tracking-[0.25em] uppercase" style="color: var(--accent);">Pursuit for Knowledge</div>
+    </div>
+  </div>
+  <a class="mobile-nav-link" data-page="home">Home</a>
+  <a class="mobile-nav-link" data-page="about">About</a>
+  <a class="mobile-nav-link" data-page="academics">Academics</a>
+  <a class="mobile-nav-link" data-page="campus">Campus Life</a>
+  <a class="mobile-nav-link" data-page="admissions">Admissions</a>
+  <a class="mobile-nav-link" data-page="contact">Contact</a>
+  <div class="mt-10 pt-8 border-t" style="border-color: rgba(212, 175, 55, 0.2);">
+    <p class="text-xs uppercase tracking-[0.3em] mb-4" style="color: var(--accent);">Get in Touch</p>
+    <p class="text-sm opacity-70 mb-2">042-3542 0000</p>
+    <p class="text-sm opacity-70">info@thanethallschool.edu.pk</p>
+    <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="inline-flex social-icon mt-4">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+  </div>
+</aside>
+
+<main>
+
+<!-- ============================================ -->
+<!-- ============ HOME PAGE ===================== -->
+<!-- ============================================ -->
+<section id="page-home" class="page active">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full">
+      <div class="max-w-4xl">
+        <p class="hero-eyebrow mb-8 reveal">Pursuit for Knowledge · Sabzazar Scheme, Lahore</p>
+        <h1 class="hero-title mb-8 reveal" style="transition-delay: 0.1s;">
+          Illuminating minds,<br>
+          <em>shaping</em> the future.
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed max-w-2xl mb-10 reveal" style="color: rgba(255, 255, 255, 0.8); transition-delay: 0.2s;">
+          Welcome to Thanet Hall School Sabzazar, where academic excellence meets character building. 
+          Established in 1998, we are dedicated to providing a nurturing environment that prepares students for success in this world and the hereafter.
+        </p>
+        <div class="flex flex-wrap gap-4 mb-16 reveal" style="transition-delay: 0.3s;">
+          <button class="btn-primary" data-page="admissions">
+            <span>Apply for Admission</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+          <button class="btn-outline" data-page="campus" style="color: #fff; border-color: rgba(255,255,255,0.4);">
+            <span>Explore Campus</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-8 max-w-2xl reveal" style="transition-delay: 0.4s;">
+          <div class="border-l-2 pl-4" style="border-color: rgba(212, 175, 55, 0.3);">
+            <div class="font-display text-3xl md:text-4xl font-bold" style="color: var(--accent);">25+</div>
+            <div class="text-[10px] md:text-xs uppercase tracking-[0.2em] mt-2" style="color: rgba(255,255,255,0.6);">Years of Service</div>
+          </div>
+          <div class="border-l-2 pl-4" style="border-color: rgba(212, 175, 55, 0.3);">
+            <div class="font-display text-3xl md:text-4xl font-bold" style="color: var(--accent);">1200+</div>
+            <div class="text-[10px] md:text-xs uppercase tracking-[0.2em] mt-2" style="color: rgba(255,255,255,0.6);">Students Enrolled</div>
+          </div>
+          <div class="border-l-2 pl-4" style="border-color: rgba(212, 175, 55, 0.3);">
+            <div class="font-display text-3xl md:text-4xl font-bold" style="color: var(--accent);">100%</div>
+            <div class="text-[10px] md:text-xs uppercase tracking-[0.2em] mt-2" style="color: rgba(255,255,255,0.6);">Matric Pass Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-[10px] tracking-[0.3em] uppercase" style="color: var(--accent-light); opacity: 0.7;">
+      Scroll
+      <div class="w-px h-10 bg-gradient-to-b from-transparent via-current to-transparent"></div>
+    </div>
+  </div>
+
+  <!-- WELCOME / INTRO -->
+  <section class="py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div>
+          <p class="section-eyebrow mb-6 reveal">Welcome to Thanet Hall</p>
+          <h2 class="section-title mb-8 reveal" style="transition-delay: 0.1s;">
+            A tradition of <em>excellence</em> in the heart of Sabzazar.
+          </h2>
+          <p class="text-lg leading-relaxed mb-6 reveal" style="color: var(--muted); transition-delay: 0.2s;">
+            At Thanet Hall School, we believe every child is unique and capable of greatness. 
+            Our holistic approach combines rigorous academics with strong Islamic values, 
+            modern skills, and character development to create well-rounded individuals.
+          </p>
+          <p class="text-lg leading-relaxed mb-10 reveal" style="color: var(--muted); transition-delay: 0.3s;">
+            From Playgroup to Matriculation, our dedicated faculty ensures that each student 
+            receives the attention and guidance they need to excel academically, socially, and morally.
+          </p>
+          <button class="btn-outline reveal" data-page="about" style="transition-delay: 0.4s;">
+            <span>Discover Our Story</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="relative reveal reveal-right">
+          <div class="relative aspect-[4/5] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students studying" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/800x1000/0f2c5e/ffffff?text=Thanet+Hall+School';">
+            <div class="absolute inset-0" style="background: linear-gradient(135deg, transparent 60%, rgba(15, 44, 94, 0.3) 100%);"></div>
+          </div>
+          <div class="absolute -bottom-8 -left-8 bg-white p-8 max-w-xs shadow-2xl border" style="border-color: var(--border);">
+            <div class="font-display text-5xl mb-2 font-bold" style="color: var(--accent-dark);">1998</div>
+            <div class="text-sm uppercase tracking-[0.2em]" style="color: var(--muted);">Year Established</div>
+            <div class="mt-4 pt-4 border-t text-sm" style="border-color: var(--border); color: var(--fg);">
+              Serving the Sabzazar community with dedication for over two decades.
+            </div>
+          </div>
+          <div class="absolute -top-6 -right-6 w-32 h-32 border-2" style="border-color: var(--accent); z-index: -1;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Why Parents Choose Us</p>
+        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
+          An education built on <em>strong</em> foundations.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+          <h3 class="font-display text-2xl font-bold mb-3" style="color: var(--primary);">Academic Excellence</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">
+            Rigorous curriculum aligned with the Punjab Board, ensuring outstanding Matric results year after year.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-mosque"></i></div>
+          <h3 class="font-display text-2xl font-bold mb-3" style="color: var(--primary);">Islamic Values</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">
+            Integration of Islamic teachings, Nazra Quran, and character building to nurture responsible citizens.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3 class="font-display text-2xl font-bold mb-3" style="color: var(--primary);">Modern Facilities</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">
+            Well-equipped science labs, computer labs, and smart classrooms to enhance the learning experience.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h3 class="font-display text-2xl font-bold mb-3" style="color: var(--primary);">Expert Faculty</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">
+            Highly qualified and experienced teachers dedicated to bringing out the best in every single student.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="stats-section py-24 lg:py-32">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 text-center stagger">
+        <div>
+          <div class="stat-num mb-3" data-count="25" data-suffix="+">0</div>
+          <div class="text-xs uppercase tracking-[0.3em]" style="color: rgba(255,255,255,0.6);">Years Serving</div>
+        </div>
+        <div>
+          <div class="stat-num mb-3" data-count="1200" data-suffix="+">0</div>
+          <div class="text-xs uppercase tracking-[0.3em]" style="color: rgba(255,255,255,0.6);">Students</div>
+        </div>
+        <div>
+          <div class="stat-num mb-3" data-count="60">0</div>
+          <div class="text-xs uppercase tracking-[0.3em]" style="color: rgba(255,255,255,0.6);">Expert Faculty</div>
+        </div>
+        <div>
+          <div class="stat-num mb-3" data-count="100" data-suffix="%">0</div>
+          <div class="text-xs uppercase tracking-[0.3em]" style="color: rgba(255,255,255,0.6);">Matric Pass Rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS PREVIEW -->
+  <section class="py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex flex-wrap items-end justify-between gap-8 mb-16">
+        <div class="max-w-2xl">
+          <p class="section-eyebrow mb-6 reveal">Our Programs</p>
+          <h2 class="section-title reveal" style="transition-delay: 0.1s;">
+            Pathways for every <em>stage</em> of growth.
+          </h2>
+        </div>
+        <button class="btn-outline reveal" data-page="academics" style="transition-delay: 0.2s;">
+          <span>All Programs</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
+        <div class="program-card">
+          <div class="program-image">
+            <span class="program-level">Playgroup - Prep</span>
+            <img src="https://images.unsplash.com/photo-1564429238817-393bd4286b2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Early Years" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Early+Years';">
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Early Years</h3>
+            <p class="text-sm" style="color: var(--muted);">Play-based foundational learning for young minds.</p>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-image">
+            <span class="program-level">Class 1 - 5</span>
+            <img src="https://images.unsplash.com/photo-1610484826917-0f101a7a4997?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Primary School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Primary+School';">
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Primary School</h3>
+            <p class="text-sm" style="color: var(--muted);">Building strong literacy, numeracy, and core skills.</p>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-image">
+            <span class="program-level">Class 6 - 8</span>
+            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Middle School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Middle+School';">
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Middle School</h3>
+            <p class="text-sm" style="color: var(--muted);">Critical thinking and subject specialization begins.</p>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-image">
+            <span class="program-level">Class 9 - 10</span>
+            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Secondary School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Matric';">
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Secondary (Matric)</h3>
+            <p class="text-sm" style="color: var(--muted);">Science & Computer Science groups with top results.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACEBOOK FEED SECTION -->
+  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Stay Connected</p>
+        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
+          Latest from our <em>Facebook</em> page.
+        </h2>
+        <p class="mt-6 reveal" style="color: var(--muted); transition-delay: 0.2s;">
+          Follow our latest events, announcements, and student achievements.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 stagger" style="align-items: start;">
+        <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="fb-post-card block">
+          <div class="fb-post-img">
+            <img src="https://z-cdn-media.chatglm.cn/files/df9037eb-77ef-4122-bc88-931346a10473.jpg?auth_key=1885066509-bac9aec076f442b28604c9fe828e5e1e-0-c8086c009aca6ea78c6d52f81c2be524" alt="Annual Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Annual+Awards';">
+          </div>
+          <div class="fb-post-body">
+            <div class="flex items-center gap-2 mb-4">
+              <i class="fab fa-facebook" style="color: var(--primary);"></i>
+              <span class="text-xs font-semibold" style="color: var(--muted);">Posted on Facebook</span>
+            </div>
+            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Annual Award Ceremony</h4>
+            <p class="text-sm" style="color: var(--muted);">Celebrating the outstanding achievements of our brilliant students.</p>
+          </div>
+        </a>
+        <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="fb-post-card block">
+          <div class="fb-post-img">
+            <img src="https://z-cdn-media.chatglm.cn/files/f0ec0285-243d-45c5-8b1a-25482f1b2784.jpg?auth_key=1885066509-6b306147dd4b464198f02e988addc172-0-e2e9fb324b5042a6c136671e2e46dde3" alt="Guest Speaker" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Guest+Speaker';">
+          </div>
+          <div class="fb-post-body">
+            <div class="flex items-center gap-2 mb-4">
+              <i class="fab fa-facebook" style="color: var(--primary);"></i>
+              <span class="text-xs font-semibold" style="color: var(--muted);">Posted on Facebook</span>
+            </div>
+            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Knowledge Sharing Session</h4>
+            <p class="text-sm" style="color: var(--muted);">A insightful session with a esteemed guest speaker at TDHS.</p>
+          </div>
+        </a>
+        <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="fb-post-card block">
+          <div class="fb-post-img">
+            <img src="https://z-cdn-media.chatglm.cn/files/6545a5ed-cf9a-4e49-8fd3-844a6fd1f5f9.jpg?auth_key=1885066509-e2367f745d0145dc9509331805779cf2-0-9a6a97c8b67b0fbd89f7fe53cb33a8e2" alt="School Building" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Admissions+Open';">
+          </div>
+          <div class="fb-post-body">
+            <div class="flex items-center gap-2 mb-4">
+              <i class="fab fa-facebook" style="color: var(--primary);"></i>
+              <span class="text-xs font-semibold" style="color: var(--muted);">Posted on Facebook</span>
+            </div>
+            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Admissions Open 2024</h4>
+            <p class="text-sm" style="color: var(--muted);">New Session 2024 Admissions are open from Playgroup to Matric.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="btn-outline">
+          <i class="fab fa-facebook-f"></i>
+          <span>Follow Us on Facebook</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPAL'S MESSAGE -->
+  <section class="py-24 lg:py-32">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-12">
+        <div class="divider-ornament reveal">
+          <i class="fas fa-feather-alt"></i>
+        </div>
+      </div>
+      <div class="text-center reveal">
+        <div class="quote-mark mb-4">"</div>
+        <p class="font-display text-2xl md:text-3xl lg:text-4xl leading-relaxed font-medium mb-10 text-balance" style="color: var(--primary);">
+          At Thanet Hall School, we don't just prepare students for exams; 
+          we prepare them for life. Our mission is to create lifelong learners 
+          who are grounded in faith and equipped with the skills to lead tomorrow.
+        </p>
+        <div class="flex items-center justify-center gap-4">
+          <div class="w-16 h-16 rounded-full overflow-hidden border-2" style="border-color: var(--accent);">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Pakistani Female Principal" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=Principal';">
+          </div>
+          <div class="text-left">
+            <div class="font-display text-lg font-bold" style="color: var(--primary);">Mrs. Ayesha Khan</div>
+            <div class="text-xs uppercase tracking-[0.2em]" style="color: var(--accent-dark);">Principal · M.Ed, M.Phil</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-32">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10">
+      <div class="relative overflow-hidden p-12 lg:p-20 text-center" style="background: var(--primary); color: #fff;">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 30% 30%, var(--accent) 0%, transparent 50%), radial-gradient(circle at 70% 70%, var(--accent) 0%, transparent 50%);"></div>
+        <div class="relative z-10">
+          <p class="hero-eyebrow mb-6 reveal" style="justify-content: center;">Admissions 2025-2026</p>
+          <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 reveal" style="transition-delay: 0.1s;">
+            Give your child a<br><em style="color: var(--accent); font-style: italic;">foundation</em> that lasts a lifetime.
+          </h2>
+          <p class="text-lg mb-10 max-w-2xl mx-auto reveal" style="color: rgba(255,255,255,0.8); transition-delay: 0.2s;">
+            Schedule a campus visit today and discover why parents in Sabzazar trust Thanet Hall School for their children's future.
+          </p>
+          <button class="btn-primary reveal" data-page="admissions" style="transition-delay: 0.3s;">
+            <span>Schedule a Visit</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================================ -->
+<!-- ============ ABOUT PAGE ==================== -->
+<!-- ============================================ -->
+<section id="page-about" class="page">
+
+  <div class="relative py-24 lg:py-32 overflow-hidden" style="background: var(--bg-deep); color: #fff;">
+    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="orb orb-1"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+      <p class="hero-eyebrow mb-6 reveal">Our Story</p>
+      <h1 class="hero-title mb-6 reveal" style="transition-delay: 0.1s;">
+        Built on <em>tradition</em>.<br>Driven by purpose.
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl reveal" style="color: rgba(255,255,255,0.7); transition-delay: 0.2s;">
+        Over two and a half decades of nurturing learners who go on to lead lives of meaning, achievement, and service.
+      </p>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <section class="py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div>
+          <p class="section-eyebrow mb-6 reveal">Our Journey</p>
+          <h2 class="section-title mb-8 reveal" style="transition-delay: 0.1s;">
+            From a small institution to a <em>thriving</em> campus.
+          </h2>
+          <p class="text-lg leading-relaxed mb-6 reveal" style="color: var(--muted); transition-delay: 0.2s;">
+            Thanet Hall School opened its doors in Sabzazar in 1998 with a vision to provide quality, 
+            value-based education to the local community. What began as a small institution 
+            has grown into one of the most respected schools in the area.
+          </p>
+          <p class="text-lg leading-relaxed reveal" style="color: var(--muted); transition-delay: 0.3s;">
+            Through every stage of growth, we have remained anchored to our founding conviction: 
+            that every child deserves an education that honors their individuality while 
+            demanding their best.
+          </p>
+        </div>
+
+        <div class="timeline reveal reveal-right">
+          <div class="timeline-item">
+            <div class="timeline-year">1998</div>
+            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Foundation</h4>
+            <p class="text-sm" style="color: var(--muted);">Thanet Hall School established in Sabzazar Scheme, Lahore.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2005</div>
+            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">First Matric Batch</h4>
+            <p class="text-sm" style="color: var(--muted);">Our inaugural Class 10 students achieve 100% pass rate in the Punjab Board examinations.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2012</div>
+            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Campus Expansion</h4>
+            <p class="text-sm" style="color: var(--muted);">New purpose-built block added with advanced science laboratories and library.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2018</div>
+            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Digital Integration</h4>
+            <p class="text-sm" style="color: var(--muted);">Smart classroom technology and digital learning platforms rolled out.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2024</div>
+            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">STEM Center Launch</h4>
+            <p class="text-sm" style="color: var(--muted);">Dedicated STEM and robotics lab opened to foster innovation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION VISION VALUES -->
+  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">What Drives Us</p>
+        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
+          Mission, vision, and the <em>values</em> we live by.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 stagger">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+          <h3 class="font-display text-2xl font-bold mb-4" style="color: var(--primary);">Our Mission</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">
+            To provide a rigorous, inclusive, and joyful education that develops in each student the knowledge, skills, and character needed to thrive in a complex world.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-binoculars"></i></div>
+          <h3 class="font-display text-2xl font-bold mb-4" style="color: var(--primary);">Our Vision</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">
+            To be the most trusted school in Lahore for families seeking an education that balances academic distinction with ethical depth and human warmth.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-gem"></i></div>
+          <h3 class="font-display text-2xl font-bold mb-4" style="color: var(--primary);">Our Values</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">
+            Integrity, curiosity, compassion, excellence, and respect — the five commitments that guide every decision we make and every relationship we build.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Leadership Team</p>
+        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
+          Educators who <em>lead</em> with heart.
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
+        <div class="text-center group">
+          <div class="relative overflow-hidden mb-6 aspect-square">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Principal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Principal';">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Mrs. Ayesha Khan</h4>
+          <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Principal</p>
+        </div>
+        <div class="text-center group">
+          <div class="relative overflow-hidden mb-6 aspect-square">
+            <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Vice Principal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=VP';">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Mr. Kamran Ali</h4>
+          <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Vice Principal</p>
+        </div>
+        <div class="text-center group">
+          <div class="relative overflow-hidden mb-6 aspect-square">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Head of Primary" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Primary';">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Ms. Fariha Sheikh</h4>
+          <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Head of Primary</p>
+        </div>
+        <div class="text-center group">
+          <div class="relative overflow-hidden mb-6 aspect-square">
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Head of Secondary" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Secondary';">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Dr. Saeed Ahmad</h4>
+          <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Head of Secondary</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================================ -->
+<!-- ============ ACADEMICS PAGE ================ -->
+<!-- ============================================ -->
+<section id="page-academics" class="page">
+
+  <div class="relative py-24 lg:py-32 overflow-hidden" style="background: var(--bg-deep); color: #fff;">
+    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="orb orb-3"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+      <p class="hero-eyebrow mb-6 reveal">Academics</p>
+      <h1 class="hero-title mb-6 reveal" style="transition-delay: 0.1s;">
+        A curriculum that <em>challenges</em> and inspires.
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl reveal" style="color: rgba(255,255,255,0.7); transition-delay: 0.2s;">
+        Four distinct academic stages, each thoughtfully designed to meet students where they are and propel them toward who they can become.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 space-y-20">
+
+      <!-- Early Years -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="reveal">
+          <span class="inline-block text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4" style="background: var(--accent); color: var(--primary);">Playgroup - Prep</span>
+          <h2 class="section-title mb-6">Early Years <em>Program</em></h2>
+          <p class="text-lg leading-relaxed mb-6" style="color: var(--muted);">
+            Our Early Years program provides a safe, nurturing, and stimulating environment where young children begin their educational journey. Through play-based learning, storytelling, and hands-on activities, we develop language, motor skills, and social-emotional foundations.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Play-based, child-centered pedagogy</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Phonics and early literacy foundations</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Dedicated early-years activity room</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Safe and colorful learning environment</span></li>
+          </ul>
+        </div>
+        <div class="relative overflow-hidden reveal reveal-right aspect-[4/3]">
+          <img src="https://images.unsplash.com/photo-1564429238817-393bd4286b2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Early Years" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Early+Years';">
+        </div>
+      </div>
+
+      <!-- Primary -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="relative overflow-hidden reveal reveal-left aspect-[4/3] order-1 lg:order-none">
+          <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Primary" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Primary+School';">
+        </div>
+        <div class="reveal">
+          <span class="inline-block text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4" style="background: var(--accent); color: var(--primary);">Class 1 - 5</span>
+          <h2 class="section-title mb-6">Primary <em>School</em></h2>
+          <p class="text-lg leading-relaxed mb-6" style="color: var(--muted);">
+            The primary years are where curiosity meets discipline. Our students master core literacy and numeracy while exploring science, social studies, and Islamic studies. We emphasize reading habits, mental mathematics, and inquiry-based learning.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Core subjects aligned with national curriculum</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Daily reading and library periods</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Computer literacy from Class 3</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Nazra Quran and Islamic etiquettes</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Middle -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="reveal">
+          <span class="inline-block text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4" style="background: var(--accent); color: var(--primary);">Class 6 - 8</span>
+          <h2 class="section-title mb-6">Middle <em>School</em></h2>
+          <p class="text-lg leading-relaxed mb-6" style="color: var(--muted);">
+            As students enter adolescence, our program grows more rigorous and reflective. Specialist teachers guide them through advanced mathematics, laboratory sciences, and analytical writing. Critical thinking and collaboration become explicit goals.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Subject-specialist teaching faculty</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Physics, chemistry, and biology labs</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Pre-Matric stream selection guidance</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Public speaking and debate program</span></li>
+          </ul>
+        </div>
+        <div class="relative overflow-hidden reveal reveal-right aspect-[4/3]">
+          <img src="https://images.unsplash.com/photo-1610484826917-0f101a7a4997?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Middle School" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Middle+School';">
+        </div>
+      </div>
+
+      <!-- Secondary -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="relative overflow-hidden reveal reveal-left aspect-[4/3] order-1 lg:order-none">
+          <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Secondary" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Secondary';">
+        </div>
+        <div class="reveal">
+          <span class="inline-block text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4" style="background: var(--accent); color: var(--primary);">Class 9 - 10</span>
+          <h2 class="section-title mb-6">Secondary <em>Matric</em></h2>
+          <p class="text-lg leading-relaxed mb-6" style="color: var(--muted);">
+            Our secondary program prepares students for the Punjab Board Matriculation examinations with structured rigor. Students choose between Science and Computer Science groups, receiving focused coaching and past-paper practice that has produced consistent top-tier results.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Science and Computer Science groups</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Intensive board examination preparation</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>Career counseling and college guidance</span></li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle" style="color: var(--accent-dark);"></i><span>100% pass rate in recent boards</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CURRICULUM HIGHLIGHTS -->
+  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Beyond the Textbook</p>
+        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
+          Enrichment that <em>rounds</em> the whole child.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-quran"></i></div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Islamic Studies</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">Nazra Quran, Hifz support, and character education rooted in Islamic values.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Computer Science</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">Coding fundamentals, MS Office mastery, and digital citizenship from Class 3.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-flask"></i></div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Science Labs</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">Hands-on experimentation in fully equipped physics, chemistry, and biology labs.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-futbol"></i></div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Sports & PE</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">Cricket, football, badminton, and athletics with annual sports galas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-palette"></i></div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Arts & Crafts</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">Drawing, painting, calligraphy, and craft workshops throughout the year.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-microphone"></i></div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Debate & Drama</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">Urdu and English debate societies, theater productions, and recitation contests.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================================ -->
+<!-- ============ CAMPUS PAGE =================== -->
+<!-- ============================================ -->
+<section id="page-campus" class="page">
+
+  <div class="relative py-24 lg:py-32 overflow-hidden" style="background: var(--bg-deep); color: #fff;">
+    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="orb orb-1"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+      <p class="hero-eyebrow mb-6 reveal">Campus Life</p>
+      <h1 class="hero-title mb-6 reveal" style="transition-delay: 0.1s;">
+        Spaces that <em>inspire</em> learning.
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl reveal" style="color: rgba(255,255,255,0.7); transition-delay: 0.2s;">
+        A campus designed for curiosity — from science labs to sports fields, every corner invites students to explore, create, and belong.
+      </p>
+    </div>
+  </div>
+
+  <!-- FACILITIES -->
+  <section class="py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Our Facilities</p>
+        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
+          Explore our <em>campus</em> highlights.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+        <div class="facility-card">
+          <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Science Labs" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Science+Labs';">
+          <div class="facility-overlay">
+            <div class="facility-icon"><i class="fas fa-vial"></i></div>
+            <h3>Science Laboratories</h3>
+            <p>Separate physics, chemistry, and biology labs equipped for hands-on experimentation.</p>
+          </div>
+        </div>
+        <div class="facility-card">
+          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Library" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Library';">
+          <div class="facility-overlay">
+            <div class="facility-icon"><i class="fas fa-book"></i></div>
+            <h3>Central Library</h3>
+            <p>Thousands of books, reference materials, and quiet study spaces for all grades.</p>
+          </div>
+        </div>
+        <div class="facility-card">
+          <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Computer Lab" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Computer+Lab';">
+          <div class="facility-overlay">
+            <div class="facility-icon"><i class="fas fa-desktop"></i></div>
+            <h3>Computer Lab</h3>
+            <p>Modern workstations with high-speed internet and licensed educational software.</p>
+          </div>
+        </div>
+        <div class="facility-card">
+          <img src="https://images.unsplash.com/photo-1531411351211-48919ccf8457?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sports" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Sports';">
+          <div class="facility-overlay">
+            <div class="facility-icon"><i class="fas fa-running"></i></div>
+            <h3>Sports Complex</h3>
+            <p>Cricket nets, football field, badminton court, and indoor games facilities.</p>
+          </div>
+        </div>
+        <div class="facility-card">
+          <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Auditorium" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Auditorium';">
+          <div class="facility-overlay">
+            <div class="facility-icon"><i class="fas fa-theater-masks"></i></div>
+            <h3>Auditorium</h3>
+            <p>A spacious hall for assemblies, debates, performances, and school events.</p>
+          </div>
+        </div>
+        <div class="facility-card">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Classrooms" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Classrooms';">
+          <div class="facility-overlay">
+            <div class="facility-icon"><i class="fas fa-chalkboard"></i></div>
+            <h3>Smart Classrooms</h3>
+            <p>Tech-enabled classrooms designed for interactive and engaging learning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Photo Gallery</p>
+        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
+          Moments from our <em>community</em>.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 reveal" style="align-items: start;">
+        
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/campus-main-building.jpg" alt="Main School Building" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Campus';">
+          <div class="gallery-overlay"><div><h4>Campus</h4><p>Main School Building</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/award-ceremony-1.jpg" alt="Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Award+Ceremony';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Award Ceremony</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/student-achievements-group.jpg" alt="Student Achievements" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Student+Achievements';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Student Achievements</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/honoring-students.jpg" alt="Honoring Students" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Honoring+Students';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Honoring Our Students</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/activity-heavy-light-1.jpg" alt="Learning Heavy & Light" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Heavy+%26+Light';">
+          <div class="gallery-overlay"><div><h4>Activity</h4><p>Learning Heavy & Light</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/activity-heavy-light-2.jpg" alt="Interactive Learning" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Interactive+Learning';">
+          <div class="gallery-overlay"><div><h4>Classroom</h4><p>Interactive Learning</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/activity-heavy-light-3.jpg" alt="Concept Building" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Concept+Building';">
+          <div class="gallery-overlay"><div><h4>Activity</h4><p>Concept Building</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/activity-heavy-light-4.jpg" alt="Hands-on Activities" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Hands-on+Activities';">
+          <div class="gallery-overlay"><div><h4>Classroom</h4><p>Hands-on Activities</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/activity-heavy-light-5.jpg" alt="Understanding Weight" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Understanding+Weight';">
+          <div class="gallery-overlay"><div><h4>Activity</h4><p>Understanding Weight</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/activity-heavy-light-6.jpg" alt="Playgroup Fun" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Playgroup+Fun';">
+          <div class="gallery-overlay"><div><h4>Classroom</h4><p>Playgroup Fun</p></div></div>
+        </div>
+        
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/annual-award-ceremony.jpg" alt="Annual Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Annual+Awards';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Annual Award Ceremony</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/prize-distribution.jpg" alt="Prize Distribution" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Prize+Distribution';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Prize Distribution</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/student-recognition.jpg" alt="Student Recognition" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Student+Recognition';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Student Recognition</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/award-handover.jpg" alt="Award Handover" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Award+Handover';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Award Handover</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/staff-coordination-meeting.jpg" alt="Staff Coordination" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Staff+Coordination';">
+          <div class="gallery-overlay"><div><h4>Community</h4><p>Staff Coordination Meeting</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/trophy-handover-ceremony.jpg" alt="Trophy Handover" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Trophy+Handover';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Trophy Handover Ceremony</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/annual-result-ceremony.jpg" alt="Annual Result Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Annual+Result';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Annual Result Ceremony</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/achievement-award.jpg" alt="Achievement Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Achievement+Award';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Achievement Award</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/celebrating-success.jpg" alt="Celebrating Success" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Celebrating+Success';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Celebrating Success</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/felicitation-ceremony.jpg" alt="Felicitation Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Felicitation';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Felicitation Ceremony</p></div></div>
+        </div>
+
+        <!-- Newly Added Images -->
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/admissions-open-2024.jpg" alt="Admissions Open" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Admissions+Open';">
+          <div class="gallery-overlay"><div><h4>Campus</h4><p>Admissions Open 2024</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/award-ceremony-2.jpg" alt="Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Award+Ceremony';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Award Ceremony</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/welcome-parents-event.jpg" alt="Welcome Parents Event" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Welcome+Parents';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Welcome Parents Event</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/annual-event-award.jpg" alt="Annual Event Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Annual+Event';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Annual Event Award</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/medal-distribution.jpg" alt="Medal Distribution" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Medal+Distribution';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Medal Distribution</p></div></div>
+        </div>
+
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/trophy-presentation-1.jpg" alt="Trophy Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Trophy+Presentation';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Trophy Presentation</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/medal-ceremony-1.jpg" alt="Medal Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Medal+Ceremony';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Medal Ceremony</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/result-handover.jpg" alt="Result Handover" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Result+Handover';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Result Handover</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/cup-presentation.jpg" alt="Cup Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Cup+Presentation';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Cup Presentation</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/certificate-presentation.jpg" alt="Certificate Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Certificate+Presentation';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Certificate Presentation</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/welcoming-parents-2.jpg" alt="Welcoming Parents" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Welcoming+Parents';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Welcoming Parents</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/medal-ceremony-2.jpg" alt="Medal Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Medal+Ceremony';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Medal Ceremony</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/trophy-presentation-2.jpg" alt="Trophy Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Trophy+Presentation';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Trophy Presentation</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/parents-day-award-1.jpg" alt="Parents Day Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Parents+Day+Award';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Parents Day Award</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/parents-day-certificate.jpg" alt="Parents Day Certificate" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Parents+Day+Certificate';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Parents Day Certificate</p></div></div>
+        </div>
+        <div class="gallery-item aspect-[4/5]">
+          <img src="images/parents-day-award-2.jpg" alt="Parents Day Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Parents+Day+Award';">
+          <div class="gallery-overlay"><div><h4>Event</h4><p>Parents Day Award</p></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================================ -->
+<!-- ============ ADMISSIONS PAGE =============== -->
+<!-- ============================================ -->
+<section id="page-admissions" class="page">
+
+  <div class="relative py-24 lg:py-32 overflow-hidden" style="background: var(--bg-deep); color: #fff;">
+    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="orb orb-2"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+      <p class="hero-eyebrow mb-6 reveal">Admissions 2025-2026</p>
+      <h1 class="hero-title mb-6 reveal" style="transition-delay: 0.1s;">
+        Begin your <em>journey</em> with us.
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl reveal" style="color: rgba(255,255,255,0.7); transition-delay: 0.2s;">
+        A clear, supportive admission process designed to help your family make the right choice with confidence.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">How to Apply</p>
+        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
+          Four simple <em>steps</em> to enrollment.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative stagger">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Inquiry</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">Submit the online inquiry form or visit our admissions office to receive the prospectus.</p>
+          <i class="fas fa-chevron-right step-arrow hidden lg:block"></i>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Assessment</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">Age-appropriate entrance evaluation in English, Mathematics, and Urdu for Class 1 onwards.</p>
+          <i class="fas fa-chevron-right step-arrow hidden lg:block"></i>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Interview</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">A friendly conversation with parents and the student to understand aspirations and fit.</p>
+          <i class="fas fa-chevron-right step-arrow hidden lg:block"></i>
+        </div>
+        <div class="step-card">
+          <span class="step-num">04</span>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Enrollment</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">Receive offer of admission, submit required documents, and complete fee formalities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 lg:py-32" style="background: var(--bg-warm);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+        <div class="reveal">
+          <p class="section-eyebrow mb-6">Required Documents</p>
+          <h2 class="section-title mb-8">What to <em>bring</em>.</h2>
+          <div class="bg-white p-8 border" style="border-color: var(--border);">
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3 pb-4 border-b" style="border-color: var(--border);">
+                <i class="fas fa-file-alt mt-1" style="color: var(--accent-dark);"></i>
+                <div><strong style="color: var(--primary);">Completed Admission Form</strong><br><span class="text-sm" style="color: var(--muted);">Available at the admissions office.</span></div>
+              </li>
+              <li class="flex items-start gap-3 pb-4 border-b" style="border-color: var(--border);">
+                <i class="fas fa-id-card mt-1" style="color: var(--accent-dark);"></i>
+                <div><strong style="color: var(--primary);">4 Passport Photographs</strong><br><span class="text-sm" style="color: var(--muted);">Recent, with white background.</span></div>
+              </li>
+              <li class="flex items-start gap-3 pb-4 border-b" style="border-color: var(--border);">
+                <i class="fas fa-certificate mt-1" style="color: var(--accent-dark);"></i>
+                <div><strong style="color: var(--primary);">B-Form / Birth Certificate</strong><br><span class="text-sm" style="color: var(--muted);">NADRA-issued, original and photocopy.</span></div>
+              </li>
+              <li class="flex items-start gap-3 pb-4 border-b" style="border-color: var(--border);">
+                <i class="fas fa-school mt-1" style="color: var(--accent-dark);"></i>
+                <div><strong style="color: var(--primary);">School Leaving Certificate</strong><br><span class="text-sm" style="color: var(--muted);">From previous school (for Class 2 onwards).</span></div>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-file-signature mt-1" style="color: var(--accent-dark);"></i>
+                <div><strong style="color: var(--primary);">Last Report Card</strong><br><span class="text-sm" style="color: var(--muted);">Most recent academic record.</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="reveal reveal-right">
+          <p class="section-eyebrow mb-6">Fee Structure 2025-2026</p>
+          <h2 class="section-title mb-8">Transparent <em>pricing</em>.</h2>
+          <div class="space-y-4">
+            <div class="bg-white p-6 border flex justify-between items-center hover:shadow-lg transition-shadow" style="border-color: var(--border);">
+              <div>
+                <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Playgroup - Prep</h4>
+                <p class="text-sm" style="color: var(--muted);">Monthly tuition</p>
+              </div>
+              <div class="text-right">
+                <div class="font-display text-2xl" style="color: var(--accent-dark);">Rs. 3,500</div>
+                <div class="text-xs uppercase tracking-[0.2em]" style="color: var(--muted);">per month</div>
+              </div>
+            </div>
+            <div class="bg-white p-6 border flex justify-between items-center hover:shadow-lg transition-shadow" style="border-color: var(--border);">
+              <div>
+                <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Class 1 - 5</h4>
+                <p class="text-sm" style="color: var(--muted);">Monthly tuition</p>
+              </div>
+              <div class="text-right">
+                <div class="font-display text-2xl" style="color: var(--accent-dark);">Rs. 4,500</div>
+                <div class="text-xs uppercase tracking-[0.2em]" style="color: var(--muted);">per month</div>
+              </div>
+            </div>
+            <div class="bg-white p-6 border flex justify-between items-center hover:shadow-lg transition-shadow" style="border-color: var(--border);">
+              <div>
+                <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Class 6 - 8</h4>
+                <p class="text-sm" style="color: var(--muted);">Monthly tuition</p>
+              </div>
+              <div class="text-right">
+                <div class="font-display text-2xl" style="color: var(--accent-dark);">Rs. 5,500</div>
+                <div class="text-xs uppercase tracking-[0.2em]" style="color: var(--muted);">per month</div>
+              </div>
+            </div>
+            <div class="bg-white p-6 border flex justify-between items-center hover:shadow-lg transition-shadow" style="border-color: var(--border);">
+              <div>
+                <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Class 9 - 10</h4>
+                <p class="text-sm" style="color: var(--muted);">Monthly tuition</p>
+              </div>
+              <div class="text-right">
+                <div class="font-display text-2xl" style="color: var(--accent-dark);">Rs. 6,500</div>
+                <div class="text-xs uppercase tracking-[0.2em]" style="color: var(--muted);">per month</div>
+              </div>
+            </div>
+            <p class="text-xs pt-4" style="color: var(--muted);">One-time admission fee of Rs. 10,000 applies to all new enrollments. Annual charges of Rs. 3,000 cover examinations, ID cards, and academic resources.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INQUIRY FORM -->
+  <section class="py-24 lg:py-32">
+    <div class="max-w-4xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-16">
+        <p class="section-eyebrow mb-6 reveal" style="justify-content: center;">Start Your Application</p>
+        <h2 class="section-title reveal" style="transition-delay: 0.1s;">
+          Send us an <em>inquiry</em>.
+        </h2>
+        <p class="mt-6 reveal" style="color: var(--muted); transition-delay: 0.2s;">Our admissions team will respond within 24 hours.</p>
+      </div>
+
+      <form id="admission-form" class="bg-white p-8 lg:p-12 border reveal" style="border-color: var(--border);">
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="form-label">Parent / Guardian Name</label>
+            <input type="text" class="form-input" required placeholder="Full name">
+          </div>
+          <div>
+            <label class="form-label">Contact Number</label>
+            <input type="tel" class="form-input" required placeholder="03XX-XXXXXXX">
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" required placeholder="you@example.com">
+          </div>
+          <div>
+            <label class="form-label">Child's Age</label>
+            <input type="number" class="form-input" required placeholder="Age in years" min="3" max="16">
+          </div>
+        </div>
+        <div class="mb-6">
+          <label class="form-label">Grade of Interest</label>
+          <select class="form-input" required>
+            <option value="">Select a grade</option>
+            <option>Playgroup</option>
+            <option>Nursery</option>
+            <option>Prep</option>
+            <option>Class 1</option>
+            <option>Class 2</option>
+            <option>Class 3</option>
+            <option>Class 4</option>
+            <option>Class 5</option>
+            <option>Class 6</option>
+            <option>Class 7</option>
+            <option>Class 8</option>
+            <option>Class 9</option>
+            <option>Class 10</option>
+          </select>
+        </div>
+        <div class="mb-8">
+          <label class="form-label">Message (optional)</label>
+          <textarea class="form-input" rows="4" placeholder="Any questions or additional information..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-full justify-center">
+          <span>Submit Inquiry</span>
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================================ -->
+<!-- ============ CONTACT PAGE ================== -->
+<!-- ============================================ -->
+<section id="page-contact" class="page">
+
+  <div class="relative py-24 lg:py-32 overflow-hidden" style="background: var(--bg-deep); color: #fff;">
+    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="orb orb-3"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+      <p class="hero-eyebrow mb-6 reveal">Get in Touch</p>
+      <h1 class="hero-title mb-6 reveal" style="transition-delay: 0.1s;">
+        We'd love to <em>hear</em> from you.
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl reveal" style="color: rgba(255,255,255,0.7); transition-delay: 0.2s;">
+        Whether you're a prospective parent, a current family, or an alumna — our doors and inboxes are always open.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-3 gap-6 mb-16 stagger">
+        <div class="feature-card text-center">
+          <div class="feature-icon mx-auto"><i class="fas fa-map-marker-alt"></i></div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Visit Us</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">Main Boulevard, Sabzazar Scheme,<br>Lahore, Punjab, Pakistan</p>
+        </div>
+        <div class="feature-card text-center">
+          <div class="feature-icon mx-auto"><i class="fas fa-phone-alt"></i></div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Call Us</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">042-3542 0000<br>0300-1234567 (Admissions)</p>
+        </div>
+        <div class="feature-card text-center">
+          <div class="feature-icon mx-auto"><i class="fas fa-envelope"></i></div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: var(--primary);">Email Us</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">info@thanethallschool.edu.pk<br>admissions@thanethallschool.edu.pk</p>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+        <div class="reveal">
+          <p class="section-eyebrow mb-6">Send a Message</p>
+          <h2 class="section-title mb-8">Questions? <em>Reach out.</em></h2>
+          <form id="contact-form" class="space-y-5">
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="form-label">Your Name</label>
+                <input type="text" class="form-input" required placeholder="Full name">
+              </div>
+              <div>
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" required placeholder="you@example.com">
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-input" required placeholder="How can we help?">
+            </div>
+            <div>
+              <label class="form-label">Message</label>
+              <textarea class="form-input" rows="6" required placeholder="Write your message..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="reveal reveal-right">
+          <p class="section-eyebrow mb-6">Find Us</p>
+          <h2 class="section-title mb-8">Campus <em>location</em>.</h2>
+          <div class="aspect-square lg:aspect-[4/5] overflow-hidden border" style="border-color: var(--border);">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.3834280344525!2d74.25400531513988!3d31.52302348136849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919047e5d4b3f7f%3A0x6a9b1d3e3c2b1f1f!2sSabzazar%20Scheme%2C%20Lahore!5e0!3m2!1sen!2s!4v1699999999999"
+              class="w-full h-full"
+              style="border:0;"
+              loading="lazy"
+              title="Thanet Hall School Location">
+            </iframe>
+          </div>
+          <div class="mt-6 p-6 bg-white border" style="border-color: var(--border);">
+            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Office Hours</h4>
+            <div class="grid grid-cols-2 gap-2 text-sm">
+              <span style="color: var(--muted);">Monday — Thursday</span>
+              <span style="color: var(--fg);">8:00 AM — 2:00 PM</span>
+              <span style="color: var(--muted);">Friday</span>
+              <span style="color: var(--fg);">8:00 AM — 12:00 PM</span>
+              <span style="color: var(--muted);">Saturday</span>
+              <span style="color: var(--fg);">9:00 AM — 1:00 PM</span>
+              <span style="color: var(--muted);">Sunday</span>
+              <span style="color: var(--fg);">Closed</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="pt-20 pb-10">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Thanet Hall School Logo" class="h-14 w-auto rounded-full bg-white p-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+          <div>
+            <div class="font-display text-lg font-bold">Thanet Hall School</div>
+            <div class="text-[10px] tracking-[0.25em] uppercase" style="color: var(--accent);">Pursuit for Knowledge</div>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color: rgba(255, 255, 255, 0.7);">
+          Illuminating minds and shaping futures in Sabzazar, Lahore. A place where every child is known, valued, and inspired.
+        </p>
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Quick Links</h4>
+        <ul class="space-y-3">
+          <li><a class="footer-link" data-page="home"><i class="fas fa-chevron-right"></i>Home</a></li>
+          <li><a class="footer-link" data-page="about"><i class="fas fa-chevron-right"></i>About Us</a></li>
+          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Academics</a></li>
+          <li><a class="footer-link" data-page="campus"><i class="fas fa-chevron-right"></i>Campus Life</a></li>
+          <li><a class="footer-link" data-page="admissions"><i class="fas fa-chevron-right"></i>Admissions</a></li>
+          <li><a class="footer-link" data-page="contact"><i class="fas fa-chevron-right"></i>Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Programs</h4>
+        <ul class="space-y-3">
+          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Early Years</a></li>
+          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Primary School</a></li>
+          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Middle School</a></li>
+          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Matric (Science)</a></li>
+          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Islamic Studies</a></li>
+          <li><a class="footer-link" data-page="campus"><i class="fas fa-chevron-right"></i>Extracurricular</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Contact</h4>
+        <ul class="space-y-4 text-sm" style="color: rgba(255, 255, 255, 0.7);">
+          <li class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt mt-1" style="color: var(--accent);"></i>
+            <span>Main Boulevard, Sabzazar Scheme, Lahore</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-phone-alt mt-1" style="color: var(--accent);"></i>
+            <span>042-3542 0000</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-envelope mt-1" style="color: var(--accent);"></i>
+            <span>info@thanethallschool.edu.pk</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-clock mt-1" style="color: var(--accent);"></i>
+            <span>Mon — Sat: 8:00 AM — 2:00 PM</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4" style="border-color: rgba(212, 175, 55, 0.15);">
+      <p class="text-xs" style="color: rgba(255, 255, 255, 0.5);">© 2024 Thanet Hall School Sabzazar. All rights reserved.</p>
+      <p class="text-xs" style="color: rgba(255, 255, 255, 0.5);">Pursuit for Knowledge · Since 1998</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast">
+  <i class="fas fa-check-circle"></i>
+  <span id="toast-message">Message sent successfully!</span>
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
