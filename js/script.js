@@ -1,4 +1,4 @@
-  // ===== LOADER =====
+// ===== LOADER =====
   window.addEventListener('load', () => {
     setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800);
   });
@@ -23,6 +23,7 @@
       link.classList.toggle('active', link.dataset.page === pageId);
     });
 
+    // Normal scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // Re-trigger reveal animations on the new page
@@ -31,6 +32,19 @@
       reveals.forEach(el => {
         el.classList.remove('visible');
         observer.observe(el);
+      });
+
+      // Immediately show elements already in the viewport so the
+      // page header/content is visible right away, without scrolling.
+      requestAnimationFrame(() => {
+        reveals.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('visible');
+            const counters = el.querySelectorAll('[data-count]');
+            counters.forEach(animateCounter);
+          }
+        });
       });
     }, 100);
 
