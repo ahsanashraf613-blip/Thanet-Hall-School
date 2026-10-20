@@ -1,0 +1,11 @@
+{
+  "name": "thanet-hall-school",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static school website built with HTML, CSS, and JavaScript.",
+  "scripts": {
+    "dev": "npx live-server --port=3000 --host=localhost .",
+    "start": "npx serve . -l 3000",
+    "validate": "npx --yes htmlhint \"**/*.html\""
+  }
+}

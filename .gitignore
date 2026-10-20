@@ -1,0 +1,26 @@
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Dependency folders if used later
+node_modules/
+
+# Editor settings
+.vscode/
+.idea/
+
+# Build or generated output
+/dist/
+/build/
+/.cache/
+
+# Environment files
+.env
+.env.*
+
+# Local hosting artifacts
+*.pid
