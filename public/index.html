@@ -1156,26 +1156,30 @@
         <div class="grid md:grid-cols-2 gap-6 mb-6">
           <div>
             <label class="form-label">Parent / Guardian Name</label>
-            <input type="text" class="form-input" required placeholder="Full name">
+            <input type="text" name="parentName" class="form-input" required placeholder="Full name">
           </div>
           <div>
             <label class="form-label">Contact Number</label>
-            <input type="tel" class="form-input" required placeholder="03XX-XXXXXXX">
+            <input type="tel" name="phone" class="form-input" required placeholder="03XX-XXXXXXX">
           </div>
         </div>
         <div class="grid md:grid-cols-2 gap-6 mb-6">
           <div>
             <label class="form-label">Email Address</label>
-            <input type="email" class="form-input" required placeholder="you@example.com">
+            <input type="email" name="email" class="form-input" required placeholder="you@example.com">
           </div>
           <div>
             <label class="form-label">Child's Age</label>
-            <input type="number" class="form-input" required placeholder="Age in years" min="3" max="16">
+            <input type="number" name="age" class="form-input" required placeholder="Age in years" min="3" max="16">
           </div>
         </div>
         <div class="mb-6">
+          <label class="form-label">Student's Name</label>
+          <input type="text" name="studentName" class="form-input" required placeholder="Child's full name">
+        </div>
+        <div class="mb-6">
           <label class="form-label">Grade of Interest</label>
-          <select class="form-input" required>
+          <select name="grade" class="form-input" required>
             <option value="">Select a grade</option>
             <option>Playgroup</option>
             <option>Nursery</option>
@@ -1194,7 +1198,7 @@
         </div>
         <div class="mb-8">
           <label class="form-label">Message (optional)</label>
-          <textarea class="form-input" rows="4" placeholder="Any questions or additional information..."></textarea>
+          <textarea name="message" class="form-input" rows="4" placeholder="Any questions or additional information..."></textarea>
         </div>
         <button type="submit" class="btn-primary w-full justify-center">
           <span>Submit Inquiry</span>
@@ -1254,20 +1258,20 @@
             <div class="grid md:grid-cols-2 gap-5">
               <div>
                 <label class="form-label">Your Name</label>
-                <input type="text" class="form-input" required placeholder="Full name">
+                <input type="text" name="name" class="form-input" required placeholder="Full name">
               </div>
               <div>
                 <label class="form-label">Email</label>
-                <input type="email" class="form-input" required placeholder="you@example.com">
+                <input type="email" name="email" class="form-input" required placeholder="you@example.com">
               </div>
             </div>
             <div>
               <label class="form-label">Subject</label>
-              <input type="text" class="form-input" required placeholder="How can we help?">
+              <input type="text" name="subject" class="form-input" required placeholder="How can we help?">
             </div>
             <div>
               <label class="form-label">Message</label>
-              <textarea class="form-input" rows="6" required placeholder="Write your message..."></textarea>
+              <textarea name="message" class="form-input" rows="6" required placeholder="Write your message..."></textarea>
             </div>
             <button type="submit" class="btn-primary">
               <span>Send Message</span>

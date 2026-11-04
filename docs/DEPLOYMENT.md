@@ -1,51 +1,64 @@
 # Deployment Guide
 
-This project has an Express backend and stores form submissions in `data/submissions.json`, so it must run on a Node.js host. Static-only hosts such as GitHub Pages, Netlify, or a plain S3 bucket will serve the pages but **cannot process the contact, admission, or admin endpoints**.
+The live site runs on Netlify at **https://thanet-hall-school.netlify.app**, connected to the `main` branch of this repository. Every push to `main` triggers a new deploy automatically.
 
-## Requirements
+## How Netlify serves this project
 
-- Node.js 18 or newer
-- Write access to the `data/` directory at runtime (submissions are written to `data/submissions.json`)
+- `netlify.toml` publishes the static site from `public/`.
+- `/api/*` requests are rewritten to `netlify/functions/api.mjs`.
+- Submission data is stored in **Netlify Blobs** (`submissions` store, `contact` and `admission` keys).
+- `server.js` is only used for local development and for Node hosts that run a long-lived process.
 
-## Environment variables
+## Netlify configuration
 
-Copy `.env.example` to `.env` and adjust as needed:
+| Setting | Value |
+| --- | --- |
+| Publish directory | `public` |
+| Functions directory | `netlify/functions` |
+| Build command | none required |
+| Environment variables | none required |
 
-```text
-PORT=3000
-NODE_ENV=production
-```
+Netlify installs the dependencies from `package.json` before bundling the function. No build step is needed because the site is plain HTML/CSS/JS.
 
-## Local preview
+## Local development
+
+Two options:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open:
+This runs `server.js` on http://localhost:3000 and stores submissions in `data/submissions.json`.
 
-```text
-http://localhost:3000
-```
-
-## Production start
+To exercise the actual Netlify Function and Blobs locally, install the Netlify CLI and run:
 
 ```bash
-npm install --omit=dev
-npm start
+netlify dev
 ```
 
-The server listens on `process.env.PORT` and falls back to `3000`.
+Without a Netlify context the function falls back to `data/submissions.json`, so the API behaves the same either way.
 
-## Hosts that support this setup
+## API endpoints
 
-Any Node.js host will work, for example Render, Railway, Fly.io, or a VPS with a process manager. Set the build command to `npm install` and the start command to `npm start`.
+- `GET /api/health`
+- `POST /api/contact`
+- `POST /api/admission`
+- `GET /api/submissions`
 
-### Important storage caveat
+## Data storage
 
-Submissions are stored on the local filesystem, so they are lost when the host rebuilds or uses an ephemeral filesystem. For durable storage, attach a persistent volume to the deployment or move submissions to a database.
+Netlify Blobs is durable across deploys and function instances, so submissions survive redeploys. To inspect or clear them, use the Netlify dashboard (Project → Blobs) or the Netlify CLI:
 
-## GitHub Pages
+```bash
+netlify blobs:list submissions
+netlify blobs:delete submissions contact
+```
 
-GitHub Pages cannot run `server.js`. If you only need the brochure site, publish `index.html`, `css/`, `js/`, and `images/` as a static site and accept that the forms and admin dashboard will not work. Pointing the forms at an external API is the alternative.
+Deleting a key resets that list on the next page load. The function also recreates empty lists automatically.
+
+## Other hosts
+
+A Node.js host such as Render, Railway, or Fly.io can run `npm start` instead. In that mode submissions are written to `data/submissions.json` on the host's filesystem, so attach a persistent volume if you need them to survive restarts.
+
+GitHub Pages is not suitable: it cannot execute the API, so the forms and admin dashboard would not work.

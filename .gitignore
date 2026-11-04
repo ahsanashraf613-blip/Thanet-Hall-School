@@ -25,3 +25,6 @@ node_modules/
 
 # Local hosting artifacts
 *.pid
+
+# Netlify CLI local state
+.netlify/

@@ -10,6 +10,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dataDir = path.join(__dirname, 'data');
+const publicDir = path.join(__dirname, 'public');
 const submissionsFile = path.join(dataDir, 'submissions.json');
 
 app.use(express.json());
@@ -41,9 +42,9 @@ function sanitizeString(value) {
   return value.trim();
 }
 
-app.use('/css', express.static(path.join(__dirname, 'css')));
-app.use('/js', express.static(path.join(__dirname, 'js')));
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/css', express.static(path.join(publicDir, 'css')));
+app.use('/js', express.static(path.join(publicDir, 'js')));
+app.use('/images', express.static(path.join(publicDir, 'images')));
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Thanet Hall School API is running.' });
@@ -123,19 +124,19 @@ app.post('/api/admission', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(publicDir, 'index.html'));
 });
 
 app.get('/contact', (req, res) => {
-  res.sendFile(path.join(__dirname, 'contact.html'));
+  res.sendFile(path.join(publicDir, 'contact.html'));
 });
 
 app.get('/admission', (req, res) => {
-  res.sendFile(path.join(__dirname, 'admission.html'));
+  res.sendFile(path.join(publicDir, 'admission.html'));
 });
 
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'admin.html'));
+  res.sendFile(path.join(publicDir, 'admin.html'));
 });
 
 const PORT = process.env.PORT || 3000;

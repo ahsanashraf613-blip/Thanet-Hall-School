@@ -129,16 +129,65 @@
   }
 
   // ===== FORM SUBMISSION =====
-  document.getElementById('admission-form').addEventListener('submit', (e) => {
+  async function submitForm(url, payload) {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.message || 'Submission failed. Please try again.');
+    return data;
+  }
+
+  document.getElementById('admission-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    showToast('Admission inquiry submitted! We will contact you within 24 hours.', 'fa-paper-plane');
-    e.target.reset();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const data = new FormData(form);
+    const payload = {
+      fullName: data.get('parentName'),
+      parentName: data.get('parentName'),
+      email: data.get('email'),
+      phone: data.get('phone'),
+      studentName: data.get('studentName'),
+      grade: data.get('grade'),
+      message: [data.get('age') ? `Child's age: ${data.get('age')}` : '', data.get('message')].filter(Boolean).join('\n')
+    };
+
+    btn.disabled = true;
+    try {
+      await submitForm('/api/admission', payload);
+      showToast('Admission inquiry submitted! We will contact you within 24 hours.', 'fa-paper-plane');
+      form.reset();
+    } catch (err) {
+      showToast(err.message, 'fa-triangle-exclamation');
+    } finally {
+      btn.disabled = false;
+    }
   });
 
-  document.getElementById('contact-form').addEventListener('submit', (e) => {
+  document.getElementById('contact-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    showToast('Message sent successfully! Our team will respond shortly.', 'fa-envelope-open');
-    e.target.reset();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const data = new FormData(form);
+    const payload = {
+      name: data.get('name'),
+      email: data.get('email'),
+      message: [data.get('subject'), data.get('message')].filter(Boolean).join('\n\n')
+    };
+
+    btn.disabled = true;
+    try {
+      await submitForm('/api/contact', payload);
+      showToast('Message sent successfully! Our team will respond shortly.', 'fa-envelope-open');
+      form.reset();
+    } catch (err) {
+      showToast(err.message, 'fa-triangle-exclamation');
+    } finally {
+      btn.disabled = false;
+    }
   });
 
   // ===== PARALLAX ON HERO ORBS =====
