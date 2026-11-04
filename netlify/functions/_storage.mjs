@@ -1,19 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { connectLambda, getStore } from '@netlify/blobs';
+import { getStore } from '@netlify/blobs';
 
 const hasBlobsContext = () =>
   Boolean(globalThis.netlifyBlobsContext || process.env.NETLIFY_BLOBS_CONTEXT);
 const localFile = path.join(process.cwd(), 'data', 'submissions.json');
-
-export function connectStorage(event) {
-  if (hasBlobsContext()) return;
-  try {
-    connectLambda(event);
-  } catch {
-    // Outside Netlify the JSON file is used instead.
-  }
-}
 
 async function readLocal() {
   try {
@@ -29,7 +20,11 @@ async function writeLocal(data) {
 }
 
 function store() {
-  return getStore({ name: 'submissions', consistency: 'strong' });
+  const context = globalThis.netlifyBlobsContext;
+  return getStore({
+    name: 'submissions',
+    consistency: context && context.uncachedEdgeURL ? 'strong' : 'eventual'
+  });
 }
 
 export async function readSubmissions() {

@@ -1,33 +1,24 @@
-import { connectStorage, readSubmissions, writeSubmissions } from './_storage.mjs';
+import { readSubmissions, writeSubmissions } from './_storage.mjs';
 
-const json = (statusCode, payload) => ({
-  statusCode,
-  headers: {
-    'Content-Type': 'application/json',
-    'Cache-Control': 'no-store'
-  },
-  body: JSON.stringify(payload)
-});
+const json = (status, payload) =>
+  new Response(JSON.stringify(payload), {
+    status,
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store'
+    }
+  });
 
 const clean = (value) => (typeof value === 'string' ? value.trim() : '');
 
-function parseBody(event) {
-  const raw = event.isBase64Encoded
-    ? Buffer.from(event.body || '', 'base64').toString('utf8')
-    : event.body || '';
-  return raw ? JSON.parse(raw) : {};
-}
+const routeOf = (request) => {
+  const path = new URL(request.url).pathname;
+  return path.split('/').filter(Boolean).pop() || '';
+};
 
-function routeOf(event) {
-  const url = new URL(event.rawUrl || `https://local${event.path || '/'}`);
-  return url.pathname.replace(/^\/api\//, '').replace(/^\/+/, '').replace(/\/$/, '');
-}
-
-export const handler = async (event) => {
-  connectStorage(event);
-
-  const route = routeOf(event);
-  const method = event.httpMethod;
+export default async (request) => {
+  const route = routeOf(request);
+  const method = request.method;
 
   if (method === 'GET' && route === 'health') {
     return json(200, { status: 'ok', message: 'Thanet Hall School API is running.' });
@@ -40,7 +31,7 @@ export const handler = async (event) => {
   if (method === 'POST' && (route === 'contact' || route === 'admission')) {
     let body;
     try {
-      body = parseBody(event);
+      body = await request.json();
     } catch {
       return json(400, { success: false, message: 'Invalid JSON body.' });
     }
