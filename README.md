@@ -98,7 +98,7 @@ The dashboard asks for the password before it loads submissions. The session is 
 
 ## Notes
 
-This project has moved beyond a static brochure site by adding a lightweight backend and persistent storage. It can grow into a full school management system with admin authentication, database integration, and email notifications.
+This project has moved beyond a static brochure site by adding a lightweight backend, persistent storage, and authenticated admin access. It can grow into a full school management system with database integration and email notifications.
 
 ## Deployment
 
