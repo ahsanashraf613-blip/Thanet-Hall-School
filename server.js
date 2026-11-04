@@ -52,6 +52,7 @@ function sanitizeString(value) {
 app.use('/css', express.static(path.join(publicDir, 'css')));
 app.use('/js', express.static(path.join(publicDir, 'js')));
 app.use('/images', express.static(path.join(publicDir, 'images')));
+app.use(express.static(publicDir, { index: false }));
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Thanet Hall School API is running.' });
