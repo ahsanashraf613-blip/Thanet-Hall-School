@@ -3,6 +3,13 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import {
+  authConfigured,
+  checkPassword,
+  clearSessionCookie,
+  createSessionCookie,
+  readSession
+} from './netlify/functions/_auth.mjs';
 
 dotenv.config();
 
@@ -50,9 +57,42 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Thanet Hall School API is running.' });
 });
 
+const isSecure = (req) => req.secure || req.headers['x-forwarded-proto'] === 'https';
+
+app.post('/api/login', (req, res) => {
+  if (!authConfigured()) {
+    return res.status(503).json({
+      success: false,
+      message: 'Admin login is not configured. Set ADMIN_PASSWORD in the environment.'
+    });
+  }
+
+  if (!checkPassword(req.body && req.body.password)) {
+    return res.status(401).json({ success: false, message: 'Incorrect password.' });
+  }
+
+  res.setHeader('Set-Cookie', createSessionCookie({ secure: isSecure(req) }));
+  return res.json({ success: true, message: 'Signed in.' });
+});
+
+app.post('/api/logout', (req, res) => {
+  res.setHeader('Set-Cookie', clearSessionCookie({ secure: isSecure(req) }));
+  return res.json({ success: true, message: 'Signed out.' });
+});
+
 app.get('/api/submissions', (req, res) => {
-  const submissions = readSubmissions();
-  res.json(submissions);
+  if (!authConfigured()) {
+    return res.status(503).json({
+      success: false,
+      message: 'Admin login is not configured. Set ADMIN_PASSWORD in the environment.'
+    });
+  }
+
+  if (!readSession(req.headers.cookie)) {
+    return res.status(401).json({ success: false, message: 'Authentication required.' });
+  }
+
+  res.json(readSubmissions());
 });
 
 app.post('/api/contact', (req, res) => {

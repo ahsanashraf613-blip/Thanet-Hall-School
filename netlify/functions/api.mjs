@@ -1,13 +1,29 @@
+import {
+  authConfigured,
+  checkPassword,
+  clearSessionCookie,
+  createSessionCookie,
+  readSession
+} from './_auth.mjs';
 import { readSubmissions, storageMode, writeSubmissions } from './_storage.mjs';
 
-const json = (status, payload) =>
+const json = (status, payload, headers = {}) =>
   new Response(JSON.stringify(payload), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      'Cache-Control': 'no-store'
+      'Cache-Control': 'no-store',
+      ...headers
     }
   });
+
+const readJsonBody = async (request) => {
+  try {
+    return await request.json();
+  } catch {
+    return null;
+  }
+};
 
 const clean = (value) => (typeof value === 'string' ? value.trim() : '');
 
@@ -19,12 +35,46 @@ const routeOf = (request) => {
 export default async (request) => {
   const route = routeOf(request);
   const method = request.method;
+  const secure = new URL(request.url).protocol === 'https:';
 
   if (method === 'GET' && route === 'health') {
     return json(200, { status: 'ok', message: 'Thanet Hall School API is running.', storage: storageMode() });
   }
 
+  if (method === 'POST' && route === 'login') {
+    if (!authConfigured()) {
+      return json(503, {
+        success: false,
+        message: 'Admin login is not configured. Set ADMIN_PASSWORD in the environment.'
+      });
+    }
+
+    const body = await readJsonBody(request);
+    if (!body || !checkPassword(body.password)) {
+      return json(401, { success: false, message: 'Incorrect password.' });
+    }
+
+    return json(200, { success: true, message: 'Signed in.' }, {
+      'Set-Cookie': createSessionCookie({ secure })
+    });
+  }
+
+  if (method === 'POST' && route === 'logout') {
+    return json(200, { success: true, message: 'Signed out.' }, {
+      'Set-Cookie': clearSessionCookie({ secure })
+    });
+  }
+
   if (method === 'GET' && route === 'submissions') {
+    if (!authConfigured()) {
+      return json(503, {
+        success: false,
+        message: 'Admin login is not configured. Set ADMIN_PASSWORD in the environment.'
+      });
+    }
+    if (!readSession(request.headers.get('cookie'))) {
+      return json(401, { success: false, message: 'Authentication required.' });
+    }
     return json(200, await readSubmissions());
   }
 

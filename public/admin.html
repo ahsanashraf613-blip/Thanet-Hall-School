@@ -28,53 +28,82 @@
 
     <main class="pt-24 pb-20">
       <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
-        <p class="section-eyebrow mb-4">Admin dashboard</p>
-        <h1 class="section-title mb-10">School <em>Submissions</em></h1>
-
-        <div class="mb-10 grid md:grid-cols-2 gap-6">
-          <div class="bg-white border rounded-3xl p-6 shadow-md" style="border-color: var(--border);">
-            <p class="text-sm uppercase tracking-[0.25em]" style="color: var(--accent-dark);">Contact messages</p>
-            <div id="contact-count" class="font-display text-5xl font-bold mt-4" style="color: var(--primary);">0</div>
-          </div>
-          <div class="bg-white border rounded-3xl p-6 shadow-md" style="border-color: var(--border);">
-            <p class="text-sm uppercase tracking-[0.25em]" style="color: var(--accent-dark);">Admission inquiries</p>
-            <div id="admission-count" class="font-display text-5xl font-bold mt-4" style="color: var(--primary);">0</div>
-          </div>
+        <div id="login-view" class="max-w-md mx-auto bg-white border rounded-3xl p-8 shadow-md" style="border-color: var(--border);">
+          <p class="section-eyebrow mb-3">Restricted area</p>
+          <h1 class="font-display text-3xl font-bold mb-2" style="color: var(--primary);">Admin <em>sign in</em></h1>
+          <p class="text-sm mb-6" style="color: var(--muted);">Enter the dashboard password to view submissions.</p>
+          <form id="login-form" class="space-y-4" novalidate>
+            <div>
+              <label for="login-password" class="block text-sm font-semibold mb-2" style="color: var(--primary);">Password</label>
+              <input
+                id="login-password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                class="w-full border rounded-xl px-4 py-3"
+                style="border-color: var(--border);"
+              />
+            </div>
+            <button id="login-submit" type="submit" class="btn-primary w-full justify-center">Sign in</button>
+            <p id="login-error" class="text-sm text-red-600 hidden" role="alert"></p>
+          </form>
         </div>
 
-        <div class="space-y-10">
-          <div>
-            <h2 class="font-display text-3xl font-bold mb-6" style="color: var(--primary);">Contact messages</h2>
-            <div class="overflow-x-auto bg-white rounded-3xl border" style="border-color: var(--border);">
-              <table class="min-w-full text-left">
-                <thead class="bg-slate-50">
-                  <tr>
-                    <th class="px-4 py-3">Name</th>
-                    <th class="px-4 py-3">Email</th>
-                    <th class="px-4 py-3">Phone</th>
-                    <th class="px-4 py-3">Message</th>
-                  </tr>
-                </thead>
-                <tbody id="contact-table-body"></tbody>
-              </table>
+        <div id="dashboard" class="hidden">
+          <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+            <div>
+              <p class="section-eyebrow mb-4">Admin dashboard</p>
+              <h1 class="section-title">School <em>Submissions</em></h1>
+            </div>
+            <button id="logout-button" type="button" class="btn-outline">Sign out</button>
+          </div>
+
+          <div class="mb-10 grid md:grid-cols-2 gap-6">
+            <div class="bg-white border rounded-3xl p-6 shadow-md" style="border-color: var(--border);">
+              <p class="text-sm uppercase tracking-[0.25em]" style="color: var(--accent-dark);">Contact messages</p>
+              <div id="contact-count" class="font-display text-5xl font-bold mt-4" style="color: var(--primary);">0</div>
+            </div>
+            <div class="bg-white border rounded-3xl p-6 shadow-md" style="border-color: var(--border);">
+              <p class="text-sm uppercase tracking-[0.25em]" style="color: var(--accent-dark);">Admission inquiries</p>
+              <div id="admission-count" class="font-display text-5xl font-bold mt-4" style="color: var(--primary);">0</div>
             </div>
           </div>
 
-          <div>
-            <h2 class="font-display text-3xl font-bold mb-6" style="color: var(--primary);">Admission inquiries</h2>
-            <div class="overflow-x-auto bg-white rounded-3xl border" style="border-color: var(--border);">
-              <table class="min-w-full text-left">
-                <thead class="bg-slate-50">
-                  <tr>
-                    <th class="px-4 py-3">Student</th>
-                    <th class="px-4 py-3">Parent</th>
-                    <th class="px-4 py-3">Email</th>
-                    <th class="px-4 py-3">Phone</th>
-                    <th class="px-4 py-3">Grade</th>
-                  </tr>
-                </thead>
-                <tbody id="admission-table-body"></tbody>
-              </table>
+          <div class="space-y-10">
+            <div>
+              <h2 class="font-display text-3xl font-bold mb-6" style="color: var(--primary);">Contact messages</h2>
+              <div class="overflow-x-auto bg-white rounded-3xl border" style="border-color: var(--border);">
+                <table class="min-w-full text-left">
+                  <thead class="bg-slate-50">
+                    <tr>
+                      <th class="px-4 py-3">Name</th>
+                      <th class="px-4 py-3">Email</th>
+                      <th class="px-4 py-3">Phone</th>
+                      <th class="px-4 py-3">Message</th>
+                    </tr>
+                  </thead>
+                  <tbody id="contact-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="font-display text-3xl font-bold mb-6" style="color: var(--primary);">Admission inquiries</h2>
+              <div class="overflow-x-auto bg-white rounded-3xl border" style="border-color: var(--border);">
+                <table class="min-w-full text-left">
+                  <thead class="bg-slate-50">
+                    <tr>
+                      <th class="px-4 py-3">Student</th>
+                      <th class="px-4 py-3">Parent</th>
+                      <th class="px-4 py-3">Email</th>
+                      <th class="px-4 py-3">Phone</th>
+                      <th class="px-4 py-3">Grade</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admission-table-body"></tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -82,13 +111,47 @@
     </main>
 
     <script>
+      const loginView = document.getElementById('login-view');
+      const dashboard = document.getElementById('dashboard');
+      const loginForm = document.getElementById('login-form');
+      const loginError = document.getElementById('login-error');
+      const loginSubmit = document.getElementById('login-submit');
+      const logoutButton = document.getElementById('logout-button');
+
       function escapeHtml(value) {
         return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
       }
 
+      function showLogin(message) {
+        dashboard.classList.add('hidden');
+        loginView.classList.remove('hidden');
+        loginError.textContent = message || '';
+        loginError.classList.toggle('hidden', !message);
+      }
+
+      function showDashboard() {
+        loginView.classList.add('hidden');
+        dashboard.classList.remove('hidden');
+      }
+
       async function loadSubmissions() {
-        const res = await fetch('/api/submissions');
+        const res = await fetch('/api/submissions', { headers: { Accept: 'application/json' } });
+
+        if (res.status === 401) {
+          showLogin('');
+          return;
+        }
+        if (res.status === 503) {
+          showLogin('Admin login is not configured yet. Set ADMIN_PASSWORD in the environment variables.');
+          return;
+        }
+        if (!res.ok) {
+          showLogin('Could not load submissions. Please try again.');
+          return;
+        }
+
         const data = await res.json();
+        showDashboard();
 
         document.getElementById('contact-count').textContent = data.contact.length;
         document.getElementById('admission-count').textContent = data.admission.length;
@@ -119,1111 +182,44 @@
           : '<tr><td colspan="5" class="px-4 py-6 text-center">No admission inquiries yet.</td></tr>';
       }
 
+      loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const password = document.getElementById('login-password').value;
+
+        loginSubmit.disabled = true;
+        try {
+          const res = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
+          });
+          const data = await res.json().catch(() => ({}));
+
+          if (!res.ok) {
+            showLogin(data.message || 'Sign in failed. Please try again.');
+            return;
+          }
+
+          loginForm.reset();
+          loginError.classList.add('hidden');
+          await loadSubmissions();
+        } catch {
+          showLogin('Network error. Please try again.');
+        } finally {
+          loginSubmit.disabled = false;
+        }
+      });
+
+      logoutButton.addEventListener('click', async () => {
+        try {
+          await fetch('/api/logout', { method: 'POST' });
+        } catch {
+          // The cookie is cleared client-side by showing the form regardless.
+        }
+        showLogin('');
+      });
+
       loadSubmissions();
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-n

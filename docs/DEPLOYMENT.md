@@ -16,9 +16,11 @@ The live site runs on Netlify at **https://thanet-hall-school.netlify.app**, con
 | Publish directory | `public` |
 | Functions directory | `netlify/functions` |
 | Build command | none required |
-| Environment variables | none required |
+| Environment variables | `ADMIN_PASSWORD` (required), `ADMIN_SESSION_SECRET` (optional) |
 
 Netlify installs the dependencies from `package.json` before bundling the function. No build step is needed because the site is plain HTML/CSS/JS.
+
+Set environment variables in **Project configuration → Environment variables**, then trigger a redeploy. Until `ADMIN_PASSWORD` is set, `/api/login` and `/api/submissions` return `503` and the admin page shows a configuration message.
 
 ## Local development
 
@@ -29,7 +31,7 @@ npm install
 npm run dev
 ```
 
-This runs `server.js` on http://localhost:3000 and stores submissions in `data/submissions.json`.
+This runs `server.js` on http://localhost:3000 and stores submissions in `data/submissions.json`. Copy `.env.example` to `.env` and set `ADMIN_PASSWORD` first, otherwise the admin dashboard reports that login is not configured.
 
 To exercise the actual Netlify Function and Blobs locally, install the Netlify CLI and run:
 
@@ -44,7 +46,13 @@ Without a Netlify context the function falls back to `data/submissions.json`, so
 - `GET /api/health`
 - `POST /api/contact`
 - `POST /api/admission`
-- `GET /api/submissions`
+- `POST /api/login`
+- `POST /api/logout`
+- `GET /api/submissions` (requires the admin session cookie)
+
+## Admin authentication
+
+`POST /api/login` compares the submitted password with `ADMIN_PASSWORD` using a timing-safe hash comparison. On success it sets `admin_session`, an HMAC-SHA256-signed cookie with `HttpOnly`, `SameSite=Strict`, `Secure`, and an 8-hour lifetime. `GET /api/submissions` rejects requests without a valid cookie with `401`. Sessions are stateless, so logging out clears the cookie; rotating `ADMIN_PASSWORD` or `ADMIN_SESSION_SECRET` invalidates all existing sessions.
 
 ## Data storage
 

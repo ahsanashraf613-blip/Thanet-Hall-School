@@ -7,9 +7,9 @@ A dynamic school website built with Express and vanilla frontend code. This proj
 - Public website homepage
 - Dynamic contact form submissions
 - Dynamic admission form submissions
-- Admin dashboard to view form submissions
+- Password-protected admin dashboard to view form submissions
 - Simple Express backend with persistent JSON storage
-- Ready for future integration with email, database, authentication, or CMS features
+- Ready for future integration with email, database, or CMS features
 
 ## Project structure
 
@@ -27,6 +27,7 @@ A dynamic school website built with Express and vanilla frontend code. This proj
 │       └── script.js
 ├── netlify/
 │   └── functions/
+│       ├── _auth.mjs
 │       ├── _storage.mjs
 │       └── api.mjs
 ├── data/
@@ -52,13 +53,19 @@ A dynamic school website built with Express and vanilla frontend code. This proj
 npm install
 ```
 
-2. Start the app in development mode:
+2. Create a local `.env` from `.env.example` and set `ADMIN_PASSWORD`:
+
+```bash
+cp .env.example .env
+```
+
+3. Start the app in development mode:
 
 ```bash
 npm run dev
 ```
 
-3. Open the site in the browser:
+4. Open the site in the browser:
 
 ```text
 http://localhost:3000
@@ -75,17 +82,19 @@ npm start
 - `GET /api/health` — health check
 - `POST /api/contact` — saves a contact message
 - `POST /api/admission` — saves an admission inquiry
-- `GET /api/submissions` — returns saved submissions
+- `POST /api/login` — exchanges `ADMIN_PASSWORD` for an 8-hour session cookie
+- `POST /api/logout` — clears the session cookie
+- `GET /api/submissions` — returns saved submissions (requires an admin session)
 
 ## Admin dashboard
 
-Open:
+Set `ADMIN_PASSWORD` in `.env` (local) or in the host's environment variables, then open:
 
 ```text
 http://localhost:3000/admin
 ```
 
-This dashboard displays all saved contact and admission submissions.
+The dashboard asks for the password before it loads submissions. The session is stored in a signed, HttpOnly, SameSite=Strict cookie and expires after 8 hours. Set `ADMIN_SESSION_SECRET` to sign cookies with a key separate from the password; it defaults to `ADMIN_PASSWORD`.
 
 ## Notes
 
