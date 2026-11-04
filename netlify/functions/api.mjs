@@ -1,4 +1,4 @@
-import { readSubmissions, writeSubmissions } from './_storage.mjs';
+import { readSubmissions, storageMode, writeSubmissions } from './_storage.mjs';
 
 const json = (status, payload) =>
   new Response(JSON.stringify(payload), {
@@ -21,7 +21,7 @@ export default async (request) => {
   const method = request.method;
 
   if (method === 'GET' && route === 'health') {
-    return json(200, { status: 'ok', message: 'Thanet Hall School API is running.' });
+    return json(200, { status: 'ok', message: 'Thanet Hall School API is running.', storage: storageMode() });
   }
 
   if (method === 'GET' && route === 'submissions') {
