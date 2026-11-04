@@ -70,14 +70,41 @@
   }
   .font-display { font-family: 'Playfair Display', serif; }
 
+  /* Font Awesome ships font-display: block; swap keeps icons from blocking text. */
+  @font-face {
+    font-family: "Font Awesome 6 Free";
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Font Awesome 6 Brands";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2") format("woff2");
+  }
+  /* Font Awesome loads without blocking paint, so reserve the glyph box up
+     front to keep icons from shifting layout when the stylesheet arrives. */
+  .fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands {
+    display: inline-block;
+    min-width: 1em;
+    text-align: center;
+  }
+
   /* ===== LOADER ===== */
   #loader {
     position: fixed; inset: 0; z-index: 9999;
     background: var(--primary);
     display: flex; align-items: center; justify-content: center;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    transition: opacity 0.8s ease;
   }
-  #loader.hidden { opacity: 0; visibility: hidden; }
+  #loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+  }
   .loader-crest {
     width: 110px; height: 110px;
     background: #fff;
@@ -110,7 +137,7 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
-    transition: all 0.4s ease;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
   }
   #navbar.scrolled {
     background: rgba(248, 249, 252, 0.98);
@@ -124,11 +151,12 @@
   }
   .nav-link::after {
     content: ''; position: absolute; bottom: 0; left: 0;
-    width: 0; height: 2px; background: var(--accent);
-    transition: width 0.3s ease;
+    width: 100%; height: 2px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
   }
   .nav-link:hover { color: var(--primary); }
-  .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+  .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
   .nav-link.active { color: var(--primary); }
 
   /* ===== LOGO ===== */
@@ -449,7 +477,7 @@
     display: flex; align-items: flex-end; padding: 24px;
   }
   .gallery-item:hover .gallery-overlay { opacity: 1; }
-  .gallery-overlay h4 {
+  .gallery-overlay h3 {
     color: var(--accent);
     font-size: 12px; letter-spacing: 0.2em;
     text-transform: uppercase; font-weight: 700;
@@ -462,7 +490,7 @@
     transform: translateY(20px);
     transition: transform 0.4s ease 0.2s;
   }
-  .gallery-item:hover .gallery-overlay h4,
+  .gallery-item:hover .gallery-overlay h3,
   .gallery-item:hover .gallery-overlay p { transform: translateY(0); }
 
   /* ===== FACILITY CARDS ===== */

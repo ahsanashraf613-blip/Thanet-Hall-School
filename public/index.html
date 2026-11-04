@@ -5,51 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thanet Hall School Sabzazar | Pursuit for Knowledge</title>
 <meta name="description" content="Thanet Hall School Sabzazar, Lahore. Nurturing minds with quality education, modern facilities, and strong moral values from Playgroup to Matric.">
-<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="images/logo.webp" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<link rel="stylesheet" href="css/tailwind.css?v=20261104">
+<link rel="stylesheet" href="css/style.css?v=20261104">
 </head>
 <body>
 
 <!-- ===== LOADER ===== -->
 <div id="loader">
   <div class="loader-crest">
-    <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Thanet Hall School Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+    <img src="images/logo.webp" alt="Thanet Hall School Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';" width="812" height="810" loading="eager" decoding="async" fetchpriority="high">
   </div>
 </div>
 
 <!-- ===== NAVIGATION ===== -->
 <nav id="navbar">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
-    <div class="logo flex items-center gap-3" data-page="home">
-      <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Thanet Hall School Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+    <a href="#home" class="logo flex items-center gap-3" data-page="home" aria-label="Thanet Hall School home">
+      <img src="images/logo.webp" alt="Thanet Hall School Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';" width="812" height="810" loading="eager" decoding="async">
       <div class="hidden sm:block">
         <div class="font-display text-lg leading-tight font-bold" style="color: var(--primary);">Thanet Hall School</div>
         <div class="text-[10px] tracking-[0.25em] uppercase" style="color: var(--accent-dark);">Pursuit for Knowledge</div>
       </div>
-    </div>
+    </a>
 
     <div class="hidden lg:flex items-center gap-8">
-      <a class="nav-link active" data-page="home">Home</a>
-      <a class="nav-link" data-page="about">About</a>
-      <a class="nav-link" data-page="academics">Academics</a>
-      <a class="nav-link" data-page="campus">Campus Life</a>
-      <a class="nav-link" data-page="admissions">Admissions</a>
-      <a class="nav-link" data-page="contact">Contact</a>
+      <a class="nav-link active" href="#home" data-page="home">Home</a>
+      <a class="nav-link" href="#about" data-page="about">About</a>
+      <a class="nav-link" href="#academics" data-page="academics">Academics</a>
+      <a class="nav-link" href="#campus" data-page="campus">Campus Life</a>
+      <a class="nav-link" href="#admissions" data-page="admissions">Admissions</a>
+      <a class="nav-link" href="#contact" data-page="contact">Contact</a>
     </div>
 
     <div class="flex items-center gap-4">
-      <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="hidden md:flex social-icon" style="border-color: var(--primary); color: var(--primary);">
-        <i class="fab fa-facebook-f"></i>
+      <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" rel="noopener" class="hidden md:flex social-icon" style="border-color: var(--primary); color: var(--primary);" aria-label="Thanet Hall School on Facebook">
+        <i class="fab fa-facebook-f" aria-hidden="true"></i>
       </a>
-      <a class="hidden md:inline-flex btn-primary" data-page="admissions" style="padding: 10px 22px; font-size: 12px;">
+      <a class="hidden md:inline-flex btn-primary" href="#admissions" data-page="admissions" style="padding: 10px 22px; font-size: 12px;">
         <span>Apply Now</span>
         <i class="fas fa-arrow-right"></i>
       </a>
-      <button id="mobile-menu-btn" class="lg:hidden text-2-xl" style="color: var(--primary);" aria-label="Open menu">
+      <button id="mobile-menu-btn" class="lg:hidden text-2xl" style="color: var(--primary);" aria-label="Open menu">
         <i class="fas fa-bars text-xl"></i>
       </button>
     </div>
@@ -63,24 +66,24 @@
     <i class="fas fa-times"></i>
   </button>
   <div class="flex items-center gap-3 mb-10">
-    <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Logo" class="h-14 w-auto rounded-full bg-white p-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+    <img src="images/logo.webp" alt="Logo" class="h-14 w-auto rounded-full bg-white p-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';" width="812" height="810" loading="lazy" decoding="async">
     <div>
       <div class="font-display text-lg font-bold">Thanet Hall School</div>
       <div class="text-[10px] tracking-[0.25em] uppercase" style="color: var(--accent);">Pursuit for Knowledge</div>
     </div>
   </div>
-  <a class="mobile-nav-link" data-page="home">Home</a>
-  <a class="mobile-nav-link" data-page="about">About</a>
-  <a class="mobile-nav-link" data-page="academics">Academics</a>
-  <a class="mobile-nav-link" data-page="campus">Campus Life</a>
-  <a class="mobile-nav-link" data-page="admissions">Admissions</a>
-  <a class="mobile-nav-link" data-page="contact">Contact</a>
+  <a class="mobile-nav-link" href="#home" data-page="home">Home</a>
+  <a class="mobile-nav-link" href="#about" data-page="about">About</a>
+  <a class="mobile-nav-link" href="#academics" data-page="academics">Academics</a>
+  <a class="mobile-nav-link" href="#campus" data-page="campus">Campus Life</a>
+  <a class="mobile-nav-link" href="#admissions" data-page="admissions">Admissions</a>
+  <a class="mobile-nav-link" href="#contact" data-page="contact">Contact</a>
   <div class="mt-10 pt-8 border-t" style="border-color: rgba(212, 175, 55, 0.2);">
     <p class="text-xs uppercase tracking-[0.3em] mb-4" style="color: var(--accent);">Get in Touch</p>
     <p class="text-sm opacity-70 mb-2">042-3542 0000</p>
     <p class="text-sm opacity-70">info@thanethallschool.edu.pk</p>
-    <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="inline-flex social-icon mt-4">
-      <i class="fab fa-facebook-f"></i>
+    <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" rel="noopener" class="inline-flex social-icon mt-4" aria-label="Thanet Hall School on Facebook">
+      <i class="fab fa-facebook-f" aria-hidden="true"></i>
     </a>
   </div>
 </aside>
@@ -164,7 +167,7 @@
 
         <div class="relative reveal reveal-right">
           <div class="relative aspect-[4/5] overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students studying" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/800x1000/0f2c5e/ffffff?text=Thanet+Hall+School';">
+            <img src="images/welcome-students.webp" alt="Students studying" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/800x1000/0f2c5e/ffffff?text=Thanet+Hall+School';" width="800" height="1000" loading="lazy" decoding="async">
             <div class="absolute inset-0" style="background: linear-gradient(135deg, transparent 60%, rgba(15, 44, 94, 0.3) 100%);"></div>
           </div>
           <div class="absolute -bottom-8 -left-8 bg-white p-8 max-w-xs shadow-2xl border" style="border-color: var(--border);">
@@ -267,7 +270,7 @@
         <div class="program-card">
           <div class="program-image">
             <span class="program-level">Playgroup - Prep</span>
-            <img src="https://images.unsplash.com/photo-1564429238817-393bd4286b2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Early Years" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Early+Years';">
+            <img src="images/activity-heavy-light-1.jpg" alt="Early Years" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Early+Years';" width="1280" height="1280" loading="lazy" decoding="async">
           </div>
           <div class="p-6">
             <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Early Years</h3>
@@ -277,7 +280,7 @@
         <div class="program-card">
           <div class="program-image">
             <span class="program-level">Class 1 - 5</span>
-            <img src="https://images.unsplash.com/photo-1610484826917-0f101a7a4997?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Primary School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Primary+School';">
+            <img src="images/activity-heavy-light-2.jpg" alt="Primary School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Primary+School';" width="1280" height="1280" loading="lazy" decoding="async">
           </div>
           <div class="p-6">
             <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Primary School</h3>
@@ -287,7 +290,7 @@
         <div class="program-card">
           <div class="program-image">
             <span class="program-level">Class 6 - 8</span>
-            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Middle School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Middle+School';">
+            <img src="images/activity-heavy-light-3.jpg" alt="Middle School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Middle+School';" width="1280" height="1280" loading="lazy" decoding="async">
           </div>
           <div class="p-6">
             <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Middle School</h3>
@@ -297,7 +300,7 @@
         <div class="program-card">
           <div class="program-image">
             <span class="program-level">Class 9 - 10</span>
-            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Secondary School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Matric';">
+            <img src="images/program-secondary.webp" alt="Secondary School" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Matric';" width="600" height="400" loading="lazy" decoding="async">
           </div>
           <div class="p-6">
             <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Secondary (Matric)</h3>
@@ -324,40 +327,40 @@
       <div class="grid md:grid-cols-3 gap-6 stagger" style="align-items: start;">
         <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="fb-post-card block">
           <div class="fb-post-img">
-            <img src="https://z-cdn-media.chatglm.cn/files/df9037eb-77ef-4122-bc88-931346a10473.jpg?auth_key=1885066509-bac9aec076f442b28604c9fe828e5e1e-0-c8086c009aca6ea78c6d52f81c2be524" alt="Annual Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Annual+Awards';">
+            <img src="images/annual-award-ceremony.jpg" alt="Annual Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Annual+Awards';" width="960" height="1280" loading="lazy" decoding="async">
           </div>
           <div class="fb-post-body">
             <div class="flex items-center gap-2 mb-4">
               <i class="fab fa-facebook" style="color: var(--primary);"></i>
               <span class="text-xs font-semibold" style="color: var(--muted);">Posted on Facebook</span>
             </div>
-            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Annual Award Ceremony</h4>
+            <h3 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Annual Award Ceremony</h3>
             <p class="text-sm" style="color: var(--muted);">Celebrating the outstanding achievements of our brilliant students.</p>
           </div>
         </a>
         <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="fb-post-card block">
           <div class="fb-post-img">
-            <img src="https://z-cdn-media.chatglm.cn/files/f0ec0285-243d-45c5-8b1a-25482f1b2784.jpg?auth_key=1885066509-6b306147dd4b464198f02e988addc172-0-e2e9fb324b5042a6c136671e2e46dde3" alt="Guest Speaker" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Guest+Speaker';">
+            <img src="images/staff-coordination-meeting.jpg" alt="Guest Speaker" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Guest+Speaker';" width="1280" height="960" loading="lazy" decoding="async">
           </div>
           <div class="fb-post-body">
             <div class="flex items-center gap-2 mb-4">
               <i class="fab fa-facebook" style="color: var(--primary);"></i>
               <span class="text-xs font-semibold" style="color: var(--muted);">Posted on Facebook</span>
             </div>
-            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Knowledge Sharing Session</h4>
+            <h3 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Knowledge Sharing Session</h3>
             <p class="text-sm" style="color: var(--muted);">A insightful session with a esteemed guest speaker at TDHS.</p>
           </div>
         </a>
         <a href="https://www.facebook.com/ThanetHallSchoolSabzazar/" target="_blank" class="fb-post-card block">
           <div class="fb-post-img">
-            <img src="https://z-cdn-media.chatglm.cn/files/6545a5ed-cf9a-4e49-8fd3-844a6fd1f5f9.jpg?auth_key=1885066509-e2367f745d0145dc9509331805779cf2-0-9a6a97c8b67b0fbd89f7fe53cb33a8e2" alt="School Building" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Admissions+Open';">
+            <img src="images/campus-main-building.jpg" alt="School Building" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f2c5e/ffffff?text=Admissions+Open';" width="1600" height="1200" loading="lazy" decoding="async">
           </div>
           <div class="fb-post-body">
             <div class="flex items-center gap-2 mb-4">
               <i class="fab fa-facebook" style="color: var(--primary);"></i>
               <span class="text-xs font-semibold" style="color: var(--muted);">Posted on Facebook</span>
             </div>
-            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Admissions Open 2024</h4>
+            <h3 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Admissions Open 2024</h3>
             <p class="text-sm" style="color: var(--muted);">New Session 2024 Admissions are open from Playgroup to Matric.</p>
           </div>
         </a>
@@ -389,7 +392,7 @@
         </p>
         <div class="flex items-center justify-center gap-4">
           <div class="w-16 h-16 rounded-full overflow-hidden border-2" style="border-color: var(--accent);">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Pakistani Female Principal" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=Principal';">
+            <img src="images/principal.webp" alt="Pakistani Female Principal" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=Principal';" width="400" height="400" loading="lazy" decoding="async">
           </div>
           <div class="text-left">
             <div class="font-display text-lg font-bold" style="color: var(--primary);">Mrs. Ayesha Khan</div>
@@ -467,27 +470,27 @@
         <div class="timeline reveal reveal-right">
           <div class="timeline-item">
             <div class="timeline-year">1998</div>
-            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Foundation</h4>
+            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Foundation</h3>
             <p class="text-sm" style="color: var(--muted);">Thanet Hall School established in Sabzazar Scheme, Lahore.</p>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2005</div>
-            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">First Matric Batch</h4>
+            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">First Matric Batch</h3>
             <p class="text-sm" style="color: var(--muted);">Our inaugural Class 10 students achieve 100% pass rate in the Punjab Board examinations.</p>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2012</div>
-            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Campus Expansion</h4>
+            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Campus Expansion</h3>
             <p class="text-sm" style="color: var(--muted);">New purpose-built block added with advanced science laboratories and library.</p>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2018</div>
-            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Digital Integration</h4>
+            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">Digital Integration</h3>
             <p class="text-sm" style="color: var(--muted);">Smart classroom technology and digital learning platforms rolled out.</p>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2024</div>
-            <h4 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">STEM Center Launch</h4>
+            <h3 class="font-display text-xl font-bold mb-2" style="color: var(--primary);">STEM Center Launch</h3>
             <p class="text-sm" style="color: var(--muted);">Dedicated STEM and robotics lab opened to foster innovation.</p>
           </div>
         </div>
@@ -544,34 +547,34 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
         <div class="text-center group">
           <div class="relative overflow-hidden mb-6 aspect-square">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Principal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Principal';">
+            <img src="images/principal.webp" alt="Principal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Principal';" width="400" height="400" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
-          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Mrs. Ayesha Khan</h4>
+          <h3 class="font-display text-xl font-bold" style="color: var(--primary);">Mrs. Ayesha Khan</h3>
           <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Principal</p>
         </div>
         <div class="text-center group">
           <div class="relative overflow-hidden mb-6 aspect-square">
-            <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Vice Principal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=VP';">
+            <img src="images/vice-principal.webp" alt="Vice Principal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=VP';" width="400" height="400" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
-          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Mr. Kamran Ali</h4>
+          <h3 class="font-display text-xl font-bold" style="color: var(--primary);">Mr. Kamran Ali</h3>
           <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Vice Principal</p>
         </div>
         <div class="text-center group">
           <div class="relative overflow-hidden mb-6 aspect-square">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Head of Primary" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Primary';">
+            <img src="images/head-primary.webp" alt="Head of Primary" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Primary';" width="400" height="400" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
-          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Ms. Fariha Sheikh</h4>
+          <h3 class="font-display text-xl font-bold" style="color: var(--primary);">Ms. Fariha Sheikh</h3>
           <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Head of Primary</p>
         </div>
         <div class="text-center group">
           <div class="relative overflow-hidden mb-6 aspect-square">
-            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Head of Secondary" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Secondary';">
+            <img src="images/head-secondary.webp" alt="Head of Secondary" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f2c5e/d4af37?text=Secondary';" width="400" height="400" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
-          <h4 class="font-display text-xl font-bold" style="color: var(--primary);">Dr. Saeed Ahmad</h4>
+          <h3 class="font-display text-xl font-bold" style="color: var(--primary);">Dr. Saeed Ahmad</h3>
           <p class="text-xs uppercase tracking-[0.2em] mt-1" style="color: var(--accent-dark);">Head of Secondary</p>
         </div>
       </div>
@@ -618,14 +621,14 @@
           </ul>
         </div>
         <div class="relative overflow-hidden reveal reveal-right aspect-[4/3]">
-          <img src="https://images.unsplash.com/photo-1564429238817-393bd4286b2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Early Years" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Early+Years';">
+          <img src="images/activity-heavy-light-1.jpg" alt="Early Years" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Early+Years';" width="1280" height="1280" loading="lazy" decoding="async">
         </div>
       </div>
 
       <!-- Primary -->
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div class="relative overflow-hidden reveal reveal-left aspect-[4/3] order-1 lg:order-none">
-          <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Primary" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Primary+School';">
+          <img src="images/academics-primary.webp" alt="Primary" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Primary+School';" width="800" height="600" loading="lazy" decoding="async">
         </div>
         <div class="reveal">
           <span class="inline-block text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4" style="background: var(--accent); color: var(--primary);">Class 1 - 5</span>
@@ -658,14 +661,14 @@
           </ul>
         </div>
         <div class="relative overflow-hidden reveal reveal-right aspect-[4/3]">
-          <img src="https://images.unsplash.com/photo-1610484826917-0f101a7a4997?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Middle School" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Middle+School';">
+          <img src="images/activity-heavy-light-2.jpg" alt="Middle School" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Middle+School';" width="1280" height="1280" loading="lazy" decoding="async">
         </div>
       </div>
 
       <!-- Secondary -->
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div class="relative overflow-hidden reveal reveal-left aspect-[4/3] order-1 lg:order-none">
-          <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Secondary" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Secondary';">
+          <img src="images/academics-secondary.webp" alt="Secondary" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2c5e/ffffff?text=Secondary';" width="800" height="600" loading="lazy" decoding="async">
         </div>
         <div class="reveal">
           <span class="inline-block text-xs font-bold tracking-[0.2em] uppercase px-3 py-1 mb-4" style="background: var(--accent); color: var(--primary);">Class 9 - 10</span>
@@ -763,7 +766,7 @@
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
         <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Science Labs" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Science+Labs';">
+          <img src="images/facility-science.webp" alt="Science Labs" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Science+Labs';" width="600" height="800" loading="lazy" decoding="async">
           <div class="facility-overlay">
             <div class="facility-icon"><i class="fas fa-vial"></i></div>
             <h3>Science Laboratories</h3>
@@ -771,7 +774,7 @@
           </div>
         </div>
         <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Library" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Library';">
+          <img src="images/facility-library.webp" alt="Library" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Library';" width="600" height="800" loading="lazy" decoding="async">
           <div class="facility-overlay">
             <div class="facility-icon"><i class="fas fa-book"></i></div>
             <h3>Central Library</h3>
@@ -779,7 +782,7 @@
           </div>
         </div>
         <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Computer Lab" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Computer+Lab';">
+          <img src="images/facility-computer.webp" alt="Computer Lab" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Computer+Lab';" width="600" height="800" loading="lazy" decoding="async">
           <div class="facility-overlay">
             <div class="facility-icon"><i class="fas fa-desktop"></i></div>
             <h3>Computer Lab</h3>
@@ -787,7 +790,7 @@
           </div>
         </div>
         <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1531411351211-48919ccf8457?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sports" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Sports';">
+          <img src="images/facility-sports.webp" alt="Sports" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Sports';" width="600" height="800" loading="lazy" decoding="async">
           <div class="facility-overlay">
             <div class="facility-icon"><i class="fas fa-running"></i></div>
             <h3>Sports Complex</h3>
@@ -795,7 +798,7 @@
           </div>
         </div>
         <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Auditorium" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Auditorium';">
+          <img src="images/facility-auditorium.webp" alt="Auditorium" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Auditorium';" width="600" height="800" loading="lazy" decoding="async">
           <div class="facility-overlay">
             <div class="facility-icon"><i class="fas fa-theater-masks"></i></div>
             <h3>Auditorium</h3>
@@ -803,7 +806,7 @@
           </div>
         </div>
         <div class="facility-card">
-          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Classrooms" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Classrooms';">
+          <img src="images/facility-classrooms.webp" alt="Classrooms" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800/0f2c5e/ffffff?text=Classrooms';" width="600" height="800" loading="lazy" decoding="async">
           <div class="facility-overlay">
             <div class="facility-icon"><i class="fas fa-chalkboard"></i></div>
             <h3>Smart Classrooms</h3>
@@ -827,152 +830,152 @@
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 reveal" style="align-items: start;">
         
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/campus-main-building.jpg" alt="Main School Building" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Campus';">
-          <div class="gallery-overlay"><div><h4>Campus</h4><p>Main School Building</p></div></div>
+          <img src="images/campus-main-building.jpg" alt="Main School Building" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Campus';" width="1600" height="1200" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Campus</h3><p>Main School Building</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/award-ceremony-1.jpg" alt="Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Award+Ceremony';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Award Ceremony</p></div></div>
+          <img src="images/award-ceremony-1.jpg" alt="Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Award+Ceremony';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Award Ceremony</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/student-achievements-group.jpg" alt="Student Achievements" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Student+Achievements';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Student Achievements</p></div></div>
+          <img src="images/student-achievements-group.jpg" alt="Student Achievements" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Student+Achievements';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Student Achievements</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/honoring-students.jpg" alt="Honoring Students" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Honoring+Students';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Honoring Our Students</p></div></div>
+          <img src="images/honoring-students.jpg" alt="Honoring Students" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Honoring+Students';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Honoring Our Students</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/activity-heavy-light-1.jpg" alt="Learning Heavy & Light" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Heavy+%26+Light';">
-          <div class="gallery-overlay"><div><h4>Activity</h4><p>Learning Heavy & Light</p></div></div>
+          <img src="images/activity-heavy-light-1.jpg" alt="Learning Heavy & Light" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Heavy+%26+Light';" width="1280" height="1280" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Activity</h3><p>Learning Heavy & Light</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/activity-heavy-light-2.jpg" alt="Interactive Learning" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Interactive+Learning';">
-          <div class="gallery-overlay"><div><h4>Classroom</h4><p>Interactive Learning</p></div></div>
+          <img src="images/activity-heavy-light-2.jpg" alt="Interactive Learning" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Interactive+Learning';" width="1280" height="1280" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Classroom</h3><p>Interactive Learning</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/activity-heavy-light-3.jpg" alt="Concept Building" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Concept+Building';">
-          <div class="gallery-overlay"><div><h4>Activity</h4><p>Concept Building</p></div></div>
+          <img src="images/activity-heavy-light-3.jpg" alt="Concept Building" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Concept+Building';" width="1280" height="1280" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Activity</h3><p>Concept Building</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/activity-heavy-light-4.jpg" alt="Hands-on Activities" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Hands-on+Activities';">
-          <div class="gallery-overlay"><div><h4>Classroom</h4><p>Hands-on Activities</p></div></div>
+          <img src="images/activity-heavy-light-4.jpg" alt="Hands-on Activities" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Hands-on+Activities';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Classroom</h3><p>Hands-on Activities</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/activity-heavy-light-5.jpg" alt="Understanding Weight" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Understanding+Weight';">
-          <div class="gallery-overlay"><div><h4>Activity</h4><p>Understanding Weight</p></div></div>
+          <img src="images/activity-heavy-light-5.jpg" alt="Understanding Weight" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Understanding+Weight';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Activity</h3><p>Understanding Weight</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/activity-heavy-light-6.jpg" alt="Playgroup Fun" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Playgroup+Fun';">
-          <div class="gallery-overlay"><div><h4>Classroom</h4><p>Playgroup Fun</p></div></div>
+          <img src="images/activity-heavy-light-6.jpg" alt="Playgroup Fun" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Playgroup+Fun';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Classroom</h3><p>Playgroup Fun</p></div></div>
         </div>
         
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/annual-award-ceremony.jpg" alt="Annual Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Annual+Awards';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Annual Award Ceremony</p></div></div>
+          <img src="images/annual-award-ceremony.jpg" alt="Annual Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Annual+Awards';" width="960" height="1280" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Annual Award Ceremony</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/prize-distribution.jpg" alt="Prize Distribution" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Prize+Distribution';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Prize Distribution</p></div></div>
+          <img src="images/prize-distribution.jpg" alt="Prize Distribution" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Prize+Distribution';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Prize Distribution</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/student-recognition.jpg" alt="Student Recognition" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Student+Recognition';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Student Recognition</p></div></div>
+          <img src="images/student-recognition.jpg" alt="Student Recognition" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Student+Recognition';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Student Recognition</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/award-handover.jpg" alt="Award Handover" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Award+Handover';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Award Handover</p></div></div>
+          <img src="images/award-handover.jpg" alt="Award Handover" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Award+Handover';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Award Handover</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/staff-coordination-meeting.jpg" alt="Staff Coordination" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Staff+Coordination';">
-          <div class="gallery-overlay"><div><h4>Community</h4><p>Staff Coordination Meeting</p></div></div>
+          <img src="images/staff-coordination-meeting.jpg" alt="Staff Coordination" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Staff+Coordination';" width="1280" height="960" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Community</h3><p>Staff Coordination Meeting</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/trophy-handover-ceremony.jpg" alt="Trophy Handover" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Trophy+Handover';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Trophy Handover Ceremony</p></div></div>
+          <img src="images/trophy-handover-ceremony.jpg" alt="Trophy Handover" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Trophy+Handover';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Trophy Handover Ceremony</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/annual-result-ceremony.jpg" alt="Annual Result Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Annual+Result';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Annual Result Ceremony</p></div></div>
+          <img src="images/annual-result-ceremony.jpg" alt="Annual Result Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Annual+Result';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Annual Result Ceremony</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/achievement-award.jpg" alt="Achievement Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Achievement+Award';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Achievement Award</p></div></div>
+          <img src="images/achievement-award.jpg" alt="Achievement Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Achievement+Award';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Achievement Award</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/celebrating-success.jpg" alt="Celebrating Success" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Celebrating+Success';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Celebrating Success</p></div></div>
+          <img src="images/celebrating-success.jpg" alt="Celebrating Success" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Celebrating+Success';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Celebrating Success</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/felicitation-ceremony.jpg" alt="Felicitation Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Felicitation';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Felicitation Ceremony</p></div></div>
+          <img src="images/felicitation-ceremony.jpg" alt="Felicitation Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Felicitation';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Felicitation Ceremony</p></div></div>
         </div>
 
         <!-- Newly Added Images -->
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/admissions-open-2024.jpg" alt="Admissions Open" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Admissions+Open';">
-          <div class="gallery-overlay"><div><h4>Campus</h4><p>Admissions Open 2024</p></div></div>
+          <img src="images/admissions-open-2024.jpg" alt="Admissions Open" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Admissions+Open';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Campus</h3><p>Admissions Open 2024</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/award-ceremony-2.jpg" alt="Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Award+Ceremony';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Award Ceremony</p></div></div>
+          <img src="images/award-ceremony-2.jpg" alt="Award Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Award+Ceremony';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Award Ceremony</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/welcome-parents-event.jpg" alt="Welcome Parents Event" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Welcome+Parents';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Welcome Parents Event</p></div></div>
+          <img src="images/welcome-parents-event.jpg" alt="Welcome Parents Event" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Welcome+Parents';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Welcome Parents Event</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/annual-event-award.jpg" alt="Annual Event Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Annual+Event';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Annual Event Award</p></div></div>
+          <img src="images/annual-event-award.jpg" alt="Annual Event Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Annual+Event';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Annual Event Award</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/medal-distribution.jpg" alt="Medal Distribution" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Medal+Distribution';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Medal Distribution</p></div></div>
+          <img src="images/medal-distribution.jpg" alt="Medal Distribution" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Medal+Distribution';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Medal Distribution</p></div></div>
         </div>
 
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/trophy-presentation-1.jpg" alt="Trophy Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Trophy+Presentation';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Trophy Presentation</p></div></div>
+          <img src="images/trophy-presentation-1.jpg" alt="Trophy Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Trophy+Presentation';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Trophy Presentation</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/medal-ceremony-1.jpg" alt="Medal Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Medal+Ceremony';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Medal Ceremony</p></div></div>
+          <img src="images/medal-ceremony-1.jpg" alt="Medal Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Medal+Ceremony';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Medal Ceremony</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/result-handover.jpg" alt="Result Handover" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Result+Handover';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Result Handover</p></div></div>
+          <img src="images/result-handover.jpg" alt="Result Handover" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Result+Handover';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Result Handover</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/cup-presentation.jpg" alt="Cup Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Cup+Presentation';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Cup Presentation</p></div></div>
+          <img src="images/cup-presentation.jpg" alt="Cup Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Cup+Presentation';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Cup Presentation</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/certificate-presentation.jpg" alt="Certificate Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Certificate+Presentation';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Certificate Presentation</p></div></div>
+          <img src="images/certificate-presentation.jpg" alt="Certificate Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Certificate+Presentation';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Certificate Presentation</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/welcoming-parents-2.jpg" alt="Welcoming Parents" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Welcoming+Parents';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Welcoming Parents</p></div></div>
+          <img src="images/welcoming-parents-2.jpg" alt="Welcoming Parents" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Welcoming+Parents';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Welcoming Parents</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/medal-ceremony-2.jpg" alt="Medal Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Medal+Ceremony';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Medal Ceremony</p></div></div>
+          <img src="images/medal-ceremony-2.jpg" alt="Medal Ceremony" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Medal+Ceremony';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Medal Ceremony</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/trophy-presentation-2.jpg" alt="Trophy Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Trophy+Presentation';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Trophy Presentation</p></div></div>
+          <img src="images/trophy-presentation-2.jpg" alt="Trophy Presentation" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Trophy+Presentation';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Trophy Presentation</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/parents-day-award-1.jpg" alt="Parents Day Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Parents+Day+Award';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Parents Day Award</p></div></div>
+          <img src="images/parents-day-award-1.jpg" alt="Parents Day Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Parents+Day+Award';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Parents Day Award</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/parents-day-certificate.jpg" alt="Parents Day Certificate" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Parents+Day+Certificate';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Parents Day Certificate</p></div></div>
+          <img src="images/parents-day-certificate.jpg" alt="Parents Day Certificate" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Parents+Day+Certificate';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Parents Day Certificate</p></div></div>
         </div>
         <div class="gallery-item aspect-[4/5]">
-          <img src="images/parents-day-award-2.jpg" alt="Parents Day Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Parents+Day+Award';">
-          <div class="gallery-overlay"><div><h4>Event</h4><p>Parents Day Award</p></div></div>
+          <img src="images/parents-day-award-2.jpg" alt="Parents Day Award" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/500x625/0f2c5e/ffffff?text=Parents+Day+Award';" width="500" height="625" loading="lazy" decoding="async">
+          <div class="gallery-overlay"><div><h3>Event</h3><p>Parents Day Award</p></div></div>
         </div>
 
       </div>
@@ -1293,7 +1296,7 @@
             </iframe>
           </div>
           <div class="mt-6 p-6 bg-white border" style="border-color: var(--border);">
-            <h4 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Office Hours</h4>
+            <h3 class="font-display text-lg font-bold mb-2" style="color: var(--primary);">Office Hours</h3>
             <div class="grid grid-cols-2 gap-2 text-sm">
               <span style="color: var(--muted);">Monday — Thursday</span>
               <span style="color: var(--fg);">8:00 AM — 2:00 PM</span>
@@ -1322,7 +1325,7 @@
 
       <div>
         <div class="flex items-center gap-3 mb-6">
-          <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Thanet Hall School Logo" class="h-14 w-auto rounded-full bg-white p-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';">
+          <img src="images/logo.webp" alt="Thanet Hall School Logo" class="h-14 w-auto rounded-full bg-white p-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f2c5e/d4af37?text=THS';" width="812" height="810" loading="lazy" decoding="async">
           <div>
             <div class="font-display text-lg font-bold">Thanet Hall School</div>
             <div class="text-[10px] tracking-[0.25em] uppercase" style="color: var(--accent);">Pursuit for Knowledge</div>
@@ -1340,31 +1343,31 @@
       </div>
 
       <div>
-        <h4 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Quick Links</h4>
+        <h3 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Quick Links</h3>
         <ul class="space-y-3">
-          <li><a class="footer-link" data-page="home"><i class="fas fa-chevron-right"></i>Home</a></li>
-          <li><a class="footer-link" data-page="about"><i class="fas fa-chevron-right"></i>About Us</a></li>
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Academics</a></li>
-          <li><a class="footer-link" data-page="campus"><i class="fas fa-chevron-right"></i>Campus Life</a></li>
-          <li><a class="footer-link" data-page="admissions"><i class="fas fa-chevron-right"></i>Admissions</a></li>
-          <li><a class="footer-link" data-page="contact"><i class="fas fa-chevron-right"></i>Contact</a></li>
+          <li><a class="footer-link" href="#home" data-page="home"><i class="fas fa-chevron-right"></i>Home</a></li>
+          <li><a class="footer-link" href="#about" data-page="about"><i class="fas fa-chevron-right"></i>About Us</a></li>
+          <li><a class="footer-link" href="#academics" data-page="academics"><i class="fas fa-chevron-right"></i>Academics</a></li>
+          <li><a class="footer-link" href="#campus" data-page="campus"><i class="fas fa-chevron-right"></i>Campus Life</a></li>
+          <li><a class="footer-link" href="#admissions" data-page="admissions"><i class="fas fa-chevron-right"></i>Admissions</a></li>
+          <li><a class="footer-link" href="#contact" data-page="contact"><i class="fas fa-chevron-right"></i>Contact</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Programs</h4>
+        <h3 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Programs</h3>
         <ul class="space-y-3">
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Early Years</a></li>
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Primary School</a></li>
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Middle School</a></li>
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Matric (Science)</a></li>
-          <li><a class="footer-link" data-page="academics"><i class="fas fa-chevron-right"></i>Islamic Studies</a></li>
-          <li><a class="footer-link" data-page="campus"><i class="fas fa-chevron-right"></i>Extracurricular</a></li>
+          <li><a class="footer-link" href="#academics" data-page="academics"><i class="fas fa-chevron-right"></i>Early Years</a></li>
+          <li><a class="footer-link" href="#academics" data-page="academics"><i class="fas fa-chevron-right"></i>Primary School</a></li>
+          <li><a class="footer-link" href="#academics" data-page="academics"><i class="fas fa-chevron-right"></i>Middle School</a></li>
+          <li><a class="footer-link" href="#academics" data-page="academics"><i class="fas fa-chevron-right"></i>Matric (Science)</a></li>
+          <li><a class="footer-link" href="#academics" data-page="academics"><i class="fas fa-chevron-right"></i>Islamic Studies</a></li>
+          <li><a class="footer-link" href="#campus" data-page="campus"><i class="fas fa-chevron-right"></i>Extracurricular</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Contact</h4>
+        <h3 class="font-display text-lg font-bold mb-6" style="color: var(--accent);">Contact</h3>
         <ul class="space-y-4 text-sm" style="color: rgba(255, 255, 255, 0.7);">
           <li class="flex items-start gap-3">
             <i class="fas fa-map-marker-alt mt-1" style="color: var(--accent);"></i>
@@ -1405,7 +1408,7 @@
   <span id="toast-message">Message sent successfully!</span>
 </div>
 
-<script src="js/script.js"></script>
+<script src="js/script.js?v=20261104"></script>
 
 </body>
 </html>

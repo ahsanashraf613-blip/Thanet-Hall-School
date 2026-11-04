@@ -21,10 +21,13 @@ A dynamic school website built with Express and vanilla frontend code. This proj
 │   ├── contact.html
 │   ├── index.html
 │   ├── css/
-│   │   └── style.css
+│   │   ├── style.css
+│   │   └── tailwind.css
 │   ├── images/
 │   └── js/
 │       └── script.js
+├── src/
+│   └── tailwind.css
 ├── netlify/
 │   └── functions/
 │       ├── _auth.mjs
@@ -40,7 +43,8 @@ A dynamic school website built with Express and vanilla frontend code. This proj
 ├── README.md
 ├── netlify.toml
 ├── package.json
-└── server.js
+├── server.js
+└── tailwind.config.js
 ```
 
 `server.js` runs the site locally. On Netlify, the same API is served by `netlify/functions/api.mjs`, which stores submissions in Netlify Blobs instead of the local JSON file.
@@ -65,11 +69,15 @@ cp .env.example .env
 npm run dev
 ```
 
+`npm run dev` rebuilds `public/css/tailwind.css` and then starts the server. Run `npm run build:css` on its own after changing Tailwind classes in the HTML.
+
 4. Open the site in the browser:
 
 ```text
 http://localhost:3000
 ```
+
+Set `PORT` in `.env` if port 3000 is already taken.
 
 ## Production start
 

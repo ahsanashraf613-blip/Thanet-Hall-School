@@ -15,10 +15,24 @@ The live site runs on Netlify at **https://thanet-hall-school.netlify.app**, con
 | --- | --- |
 | Publish directory | `public` |
 | Functions directory | `netlify/functions` |
-| Build command | none required |
+| Build command | none required (CSS is committed) |
 | Environment variables | `ADMIN_PASSWORD` (required), `ADMIN_SESSION_SECRET` (optional) |
 
-Netlify installs the dependencies from `package.json` before bundling the function. No build step is needed because the site is plain HTML/CSS/JS.
+Netlify installs the dependencies from `package.json` before bundling the function. No build command is required because the compiled Tailwind stylesheet (`public/css/tailwind.css`) is committed.
+
+## Stylesheet build
+
+Tailwind is compiled ahead of time; the pages do not load the Tailwind CDN.
+
+```bash
+npm run build:css
+```
+
+Run this after adding or changing Tailwind utility classes in `public/**/*.html` and commit the regenerated `public/css/tailwind.css`. `tailwind.config.js` scans `public/**/*.html` and `public/js/**/*.js`.
+
+## Asset caching
+
+`netlify.toml` serves `/css/*`, `/js/*`, and `/images/*` with `Cache-Control: public, max-age=31536000, immutable`. HTML links these files with a version query string (`?v=YYYYMMDD`), so **bump that version in every page** whenever a stylesheet, script, or image changes — otherwise returning visitors keep the cached copy.
 
 Set environment variables in **Project configuration → Environment variables**, then trigger a redeploy. Until `ADMIN_PASSWORD` is set, `/api/login` and `/api/submissions` return `503` and the admin page shows a configuration message.
 
