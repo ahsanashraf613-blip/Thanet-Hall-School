@@ -2,7 +2,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { getStore } from '@netlify/blobs';
 
-const useBlobs = Boolean(process.env.NETLIFY_BLOBS_CONTEXT);
+const hasBlobsContext = () =>
+  Boolean(globalThis.netlifyBlobsContext || process.env.NETLIFY_BLOBS_CONTEXT);
 const localFile = path.join(process.cwd(), 'data', 'submissions.json');
 
 async function readLocal() {
@@ -23,7 +24,7 @@ function store() {
 }
 
 export async function readSubmissions() {
-  if (!useBlobs) return readLocal();
+  if (!hasBlobsContext()) return readLocal();
   const blobs = store();
   return {
     contact: (await blobs.get('contact', { type: 'json' })) || [],
@@ -32,7 +33,7 @@ export async function readSubmissions() {
 }
 
 export async function writeSubmissions(data) {
-  if (!useBlobs) return writeLocal(data);
+  if (!hasBlobsContext()) return writeLocal(data);
   const blobs = store();
   await blobs.setJSON('contact', data.contact);
   await blobs.setJSON('admission', data.admission);
