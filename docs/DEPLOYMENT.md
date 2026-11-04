@@ -1,39 +1,25 @@
 # Deployment Guide
 
-This project is a static website, so deployment is straightforward.
+This project has an Express backend and stores form submissions in `data/submissions.json`, so it must run on a Node.js host. Static-only hosts such as GitHub Pages, Netlify, or a plain S3 bucket will serve the pages but **cannot process the contact, admission, or admin endpoints**.
 
-## Recommended options
+## Requirements
 
-### GitHub Pages
+- Node.js 18 or newer
+- Write access to the `data/` directory at runtime (submissions are written to `data/submissions.json`)
 
-1. Push the repository to GitHub.
-2. Open the repository settings.
-3. Enable GitHub Pages.
-4. Select the `main` branch as the deploy source.
-5. Publish the site.
+## Environment variables
 
-### Vercel
+Copy `.env.example` to `.env` and adjust as needed:
 
-1. Import the repository into Vercel.
-2. Keep the default build settings for a static site.
-3. Set the project root to the repository root.
-4. Deploy.
-
-### Netlify
-
-1. Import the repository.
-2. Use the default static site settings.
-3. Publish the site.
-
-## Notes
-
-- The site does not require a backend or database.
-- Images and CSS are served as static assets.
-- Any future JavaScript enhancements should remain browser-safe and lightweight.
+```text
+PORT=3000
+NODE_ENV=production
+```
 
 ## Local preview
 
 ```bash
+npm install
 npm run dev
 ```
 
@@ -42,3 +28,24 @@ Then open:
 ```text
 http://localhost:3000
 ```
+
+## Production start
+
+```bash
+npm install --omit=dev
+npm start
+```
+
+The server listens on `process.env.PORT` and falls back to `3000`.
+
+## Hosts that support this setup
+
+Any Node.js host will work, for example Render, Railway, Fly.io, or a VPS with a process manager. Set the build command to `npm install` and the start command to `npm start`.
+
+### Important storage caveat
+
+Submissions are stored on the local filesystem, so they are lost when the host rebuilds or uses an ephemeral filesystem. For durable storage, attach a persistent volume to the deployment or move submissions to a database.
+
+## GitHub Pages
+
+GitHub Pages cannot run `server.js`. If you only need the brochure site, publish `index.html`, `css/`, `js/`, and `images/` as a static site and accept that the forms and admin dashboard will not work. Pointing the forms at an external API is the alternative.

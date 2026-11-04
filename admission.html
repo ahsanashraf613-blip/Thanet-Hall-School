@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admissions | Thanet Hall School</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <nav id="navbar" class="scrolled">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+        <a href="/" class="logo flex items-center gap-3">
+          <img src="https://z-cdn-media.chatglm.cn/files/b9d0405f-379f-4360-82e0-16c7479eb445.png?auth_key=1884742397-b11ea9a0661d48a09604b93a8b499995-0-0c2237fc7f60b2f289e8b9735a7add17" alt="Thanet Hall School Logo" class="w-12 h-12 rounded-full object-cover" />
+          <div>
+            <div class="font-display text-lg leading-tight font-bold" style="color: var(--primary);">Thanet Hall School</div>
+            <div class="text-[10px] tracking-[0.25em] uppercase" style="color: var(--accent-dark);">Pursuit for Knowledge</div>
+          </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link active" href="/admission">Admissions</a>
+          <a class="nav-link" href="/contact">Contact</a>
+          <a class="nav-link" href="/admin">Admin</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-24 pb-20">
+      <section class="max-w-6xl mx-auto px-6 lg:px-10 py-16">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <p class="section-eyebrow mb-4">Admissions 2025-2026</p>
+            <h1 class="section-title mb-6">Join the <em>Thanet Hall</em> family.</h1>
+            <p class="text-lg leading-relaxed" style="color: var(--muted);">
+              We welcome families seeking a quality education rooted in academics, values, and personal growth.
+            </p>
+            <div class="mt-10 space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                <div>
+                  <h3 class="font-display text-xl font-bold" style="color: var(--primary);">Easy process</h3>
+                  <p style="color: var(--muted);">A simple inquiry and enrollment support process.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                <div>
+                  <h3 class="font-display text-xl font-bold" style="color: var(--primary);">Parent support</h3>
+                  <p style="color: var(--muted);">We help parents choose the right place for each child.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div>
+                  <h3 class="font-display text-xl font-bold" style="color: var(--primary);">Strong academics</h3>
+                  <p style="color: var(--muted);">We nurture confident, capable, and ethical learners.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl border p-8 shadow-lg" style="border-color: var(--border);">
+            <form id="admission-form" class="space-y-5">
+              <div>
+                <label class="block mb-2 text-sm font-semibold" style="color: var(--primary);">Applicant full name</label>
+                <input type="text" name="fullName" required class="w-full px-4 py-3 rounded-xl border focus:outline-none" style="border-color: var(--border); background: #fff;" />
+              </div>
+              <div>
+                <label class="block mb-2 text-sm font-semibold" style="color: var(--primary);">Parent/guardian name</label>
+                <input type="text" name="parentName" class="w-full px-4 py-3 rounded-xl border focus:outline-none" style="border-color: var(--border); background: #fff;" />
+              </div>
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block mb-2 text-sm font-semibold" style="color: var(--primary);">Email</label>
+                  <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl border focus:outline-none" style="border-color: var(--border); background: #fff;" />
+                </div>
+                <div>
+                  <label class="block mb-2 text-sm font-semibold" style="color: var(--primary);">Phone</label>
+                  <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl border focus:outline-none" style="border-color: var(--border); background: #fff;" />
+                </div>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block mb-2 text-sm font-semibold" style="color: var(--primary);">Student name</label>
+                  <input type="text" name="studentName" required class="w-full px-4 py-3 rounded-xl border focus:outline-none" style="border-color: var(--border); background: #fff;" />
+                </div>
+                <div>
+                  <label class="block mb-2 text-sm font-semibold" style="color: var(--primary);">Grade applying for</label>
+                  <select name="grade" required class="w-full px-4 py-3 rounded-xl border focus:outline-none" style="border-color: var(--border); background: #fff;">
+                    <option value="">Select grade</option>
+                    <option>Playgroup</option>
+                    <option>Nursery</option>
+                    <option>Prep</option>
+                    <option>Class 1</option>
+                    <option>Class 2</option>
+                    <option>Class 3</option>
+                    <option>Class 4</option>
+                    <option>Class 5</option>
+                    <option>Class 6</option>
+                    <option>Class 7</option>
+                    <option>Class 8</option>
+                    <option>Class 9</option>
+                    <option>Class 10</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="block mb-2 text-sm font-semibold" style="color: var(--primary);">Message</label>
+                <textarea name="message" rows="4" class="w-full px-4 py-3 rounded-xl border focus:outline-none" style="border-color: var(--border); background: #fff;"></textarea>
+              </div>
+              <button type="submit" class="btn-primary w-full justify-center">
+                <span>Submit Admission Inquiry</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="fixed right-5 bottom-5 hidden rounded-xl bg-slate-900 px-4 py-3 text-white shadow-xl">
+      <i class="fas fa-check-circle mr-2"></i>
+      <span id="toast-message">Saved</span>
+    </div>
+
+    <script>
+      const form = document.getElementById('admission-form');
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+
+      function showToast(message) {
+        toastMessage.textContent = message;
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 3000);
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+
+        try {
+          const res = await fetch('/api/admission', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.message || 'Failed');
+          form.reset();
+          showToast(data.message || 'Admission inquiry submitted.');
+        } catch (error) {
+          showToast(error.message || 'Something went wrong.');
+        }
+      });
+    </script>
+  </body>
+</html>
