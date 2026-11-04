@@ -1,4 +1,4 @@
-import { readSubmissions, writeSubmissions } from './_storage.mjs';
+import { connectStorage, readSubmissions, writeSubmissions } from './_storage.mjs';
 
 const json = (statusCode, payload) => ({
   statusCode,
@@ -24,6 +24,8 @@ function routeOf(event) {
 }
 
 export const handler = async (event) => {
+  connectStorage(event);
+
   const route = routeOf(event);
   const method = event.httpMethod;
 
